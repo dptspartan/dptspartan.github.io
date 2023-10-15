@@ -57,6 +57,20 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.button-white{
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+}
 @media only screen and (max-width: 900px) {
     #myimage {
         display: none;
