@@ -5,6 +5,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const posts = document.querySelectorAll(".post");
+        let currentPostIndex = 0;
+
+        function showPost(index) {
+            posts.forEach((post) => (post.style.display = "none"));
+            posts[index].style.display = "block";
+        }
+
+        showPost(currentPostIndex);
+
+        document.getElementById("prev-button").addEventListener("click", function () {
+            currentPostIndex = (currentPostIndex - 1 + posts.length) % posts.length;
+            showPost(currentPostIndex);
+        });
+
+        document.getElementById("next-button").addEventListener("click", function () {
+            currentPostIndex = (currentPostIndex + 1) % posts.length;
+            showPost(currentPostIndex);
+        });
+    });
+
+
+
+
+
+
+
+    </script>
 </head>
 <body>
     <div class="header">
@@ -12,16 +42,64 @@
         <div class="navbar">
             <a class="active" href="#">Project</a>
             <a href="portfolio.html">Portfolio</a>
-            <a href="#">Contact</a>
+            <a href="contact.html">Contact</a>
         </div>
-        <script>
-            window.addEventListener('wheel', function(e){
-                if(e.deltaY > 0){
-                    window.scrollBy(0, window.innerHeight);
-                }else{
-                    window.scrollBy(0, -window.innerHeight);
-                }
-            });
-        </script>
+    </div>
+    <div class="section1">
+        <div class="d-flex justify-content-center" style="margin-top: 250px;">
+            <div class="projects">
+                <div class="post-container">
+                    <div class="post" id="post-1">
+                        <div class="row">
+                            <div class="col-md" id="post-img">
+                                <Video width="320" height="240" controls><source src="VR_draw.mp4"></Video>
+                            </div>
+                            <div class="col-md" style="padding-top:25px">
+                                <h1>Draw On VR</h1>
+                                <p>This wads a project I did for a company based in USA called ClarityTec. The idea was to use VR 
+                                    to let user draw a prompt which will them be recorded. This was of the tricky projects ive done as the
+                                    implementation wasn't really as simple as it seems. there wasn't much helpful documentation out there.
+                                    So i pretty much had to figure out on my own. Ultimately i did provide a working solution however the project
+                                    was never completed by me as per there requirement. The issue ws that i was unable to manage my time. I not only
+                                    messed up this Project but had bad grades that semester. Moving on from this im learning and slowly
+                                    improving in life. With all the mess-up i learned a lot about what to do and what no to.
+                                    Also realized my own limits along the way so in the end this project did bring a lot o change to me
+                                    and im even more ready to work on many more projects to come.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post" id="post-2">
+                        <div class="row">
+                            <div class="col-md" id="post-img">
+                                <img class="img-fluid" src="Hackathon.jpg">
+                            </div>
+                            <div class="col-md" style="padding-top:25px">
+                                <h1>Art Gallery</h1>
+                                <p>For Hackathon 22 hosted by OmnilifeFCCU. Me alosg with my team developed a Virtual art gelery to display art peicesd byt fellow students.
+                                    We were asked to present this idea in front of participants and judges during the event.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="post" id="post-3">
+                        <div class="row">
+                            <div class="col-md" id="post-img">
+                                <Video width="320" height="240" controls><source src="UnrealFPSTest.mp4"></Video>
+                            </div>
+                            <div class="col-md" style="padding-top:25px">
+                                <h1>Post 3</h1>
+                                <p>This is the content of Post 3.</p>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="navigation">
+                    <button id="prev-button" style="float: left;">&larr;</button>
+                    <button id="next-button" style="float: right;">&rarr;</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>

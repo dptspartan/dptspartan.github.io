@@ -28,6 +28,16 @@ p{
     padding: 0px 20px;
     text-decoration: none;
 }
+.active{
+    color: black !important;
+    background-color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
 body, html {
     height: 100%;
   }
@@ -82,8 +92,64 @@ body, html {
     -ms-border-radius:4px;
     -o-border-radius:4px;
 }
+input{
+    background-color: rgb(10, 10, 10);
+    color: white;
+    width:300px;
+    height: 40px;
+    margin: 10px 35px;
+    padding: 0px 10px;;
+    border-style:groove;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+textarea{
+    background-color: rgb(10, 10, 10) ;
+    color: white;
+    width: 300px;
+    height: 150px;
+    padding: 0px 10px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+.projects{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+}
+.post-container {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.post {
+    display: none;
+}
+
+.navigation {
+    text-align: center;
+}
+#post-img {
+    max-width: 350px;
+}
+#prev-button, #next-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 50px;
+    padding: 10px 20px;
+    margin: 10px;
+}
 @media only screen and (max-width: 900px) {
     #myimage {
         display: none;
+    }
+    .post-container{
+        width: 400px;
     }
 }
