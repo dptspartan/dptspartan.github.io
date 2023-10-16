@@ -59,7 +59,21 @@ body, html {
 }
 .button-white{
     color: black;
-    background-color: white;
+    background-color: white !important;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -ms-border-radius:4px;
+    -o-border-radius:4px;
+}
+.button-black{
+    color: white;
+    background-color: black !important;
     text-decoration: none;
     font-size: 25px;
     font-weight: bold;
