@@ -107,6 +107,10 @@ export const dubizzle = {
           tag: 'Major features',
           points: ['Report views for sales teams and managers.', 'Filters to slice the data the way each team needs.'],
         },
+        {
+          name: 'Roles & access',
+          points: ['Roles and permissions across tenants.'],
+        },
       ],
     },
     {
