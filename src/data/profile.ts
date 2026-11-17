@@ -17,7 +17,7 @@ export const profile = {
   company: 'Dubizzle Labs',
   location: 'Lahore, Pakistan',
   tagline:
-    'I build the CRM platforms that real-estate and classifieds teams live in all day, and I care about making complex workflows feel like one calm screen.',
+    'Software engineer who builds products people rely on every day, and who cares about making complex things feel simple.',
   github: 'https://github.com/dptspartan',
   // TODO: add your LinkedIn URL, or leave empty to hide the button.
   linkedin: '',
@@ -26,7 +26,7 @@ export const profile = {
   // TODO: replace public/resume.pdf with your current résumé (the existing one is from 2023).
   resume: '/resume.pdf',
   avatar: '/assets/img/shoaib.jpg',
-  status: 'Shipping CRM features',
+  status: 'Shipping at Dubizzle Labs',
 }
 
 /** HUD stats in the hero. Use a string value of PLACEHOLDER until you have the real number. */
@@ -58,7 +58,7 @@ export const dubizzle = {
   // TODO: your start date and current title, e.g. "2024 – Present".
   period: PLACEHOLDER,
   intro:
-    'At Dubizzle Labs I work on the internal CRM platform behind some of the region’s biggest property and classifieds brands. Because this is proprietary work, what follows are overviews of what I built and why it mattered, not source code.',
+    'At Dubizzle Labs my main work has been on the internal CRM platforms behind some of the region’s biggest property and classifieds brands, alongside other projects. Because this is proprietary work, what follows are overviews of what I built and why it mattered, not source code.',
   missions: [
     {
       id: 'group-crm',
@@ -196,7 +196,7 @@ export const projects: Project[] = [
 export const skills: { group: string; level: number; items: string[] }[] = [
   // TODO: adjust groups, levels (0–100) and items to match your current stack.
   { group: 'Frontend', level: 88, items: ['React', 'TypeScript', 'JavaScript', 'HTML/CSS'] },
-  { group: 'Product & CRM', level: 90, items: ['Multi-tenant SaaS', 'Workflow UX', 'Internal tools'] },
+  { group: 'Product engineering', level: 90, items: ['Multi-tenant SaaS', 'Workflow UX', 'Internal tools'] },
   { group: 'Backend', level: 70, items: ['APIs', 'Python', 'C#'] },
   { group: 'Games & XR', level: 75, items: ['Unity', 'Unreal Engine 5', 'VR', 'Spark AR'] },
   { group: 'Machine learning', level: 60, items: ['TensorFlow', 'scikit-learn', 'OpenCV'] },

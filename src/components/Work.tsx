@@ -40,7 +40,7 @@ export default function Work() {
 
   return (
     <section id="work" className="relative mx-auto max-w-6xl px-4 py-24 md:py-32">
-      <SectionHead index="02" kicker={`Main quest · ${dubizzle.company}`} title="CRM platforms people work in all day">
+      <SectionHead index="02" kicker={`Main quest · ${dubizzle.company}`} title="Selected work at Dubizzle Labs">
         {dubizzle.intro}
       </SectionHead>
 
