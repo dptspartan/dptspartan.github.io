@@ -462,7 +462,90 @@ body {
   }
 }
 
+/* Quicker door pass when scrolling between sections */
+.curtain.pass.closing .curtain-door {
+  animation-duration: 0.26s;
+}
+.curtain.pass.opening .curtain-door {
+  transition-duration: 0.38s;
+}
+.curtain.pass .curtain-bar span {
+  animation-duration: 0.4s;
+}
+
+/* ---------- Operator card scan-in ---------- */
+.op-scanin {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+  pointer-events: none;
+}
+.op-scanin i {
+  background: var(--bg);
+  outline: 1px solid var(--bg);
+}
+.op-scanin.go i {
+  animation: tile-out 0.35s steps(3, end) both;
+  animation-delay: var(--d);
+}
+@keyframes tile-out {
+  0% {
+    background: var(--bg);
+  }
+  40% {
+    background: color-mix(in srgb, var(--accent) 35%, var(--bg));
+  }
+  100% {
+    background: transparent;
+    outline-color: transparent;
+  }
+}
+.op-scanin-line {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  z-index: 21;
+  background: var(--accent);
+  box-shadow:
+    0 0 12px 2px var(--accent),
+    0 0 40px 6px color-mix(in srgb, var(--accent) 40%, transparent);
+  opacity: 0;
+}
+.op-scanin.go .op-scanin-line {
+  animation: scan-sweep 2.4s ease-in-out both;
+}
+@keyframes scan-sweep {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  25% {
+    top: calc(100% - 3px);
+  }
+  50% {
+    top: 0;
+  }
+  75% {
+    top: calc(100% - 3px);
+  }
+  95% {
+    top: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .op-scanin {
+    display: none;
+  }
   .reveal[data-fx] {
     clip-path: none !important;
     filter: none !important;

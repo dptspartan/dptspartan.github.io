@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from 'react'
+import { useSeen } from '../hooks'
 import { useContent, useT } from '../i18n'
 
 /** Military-style operator dossier: the "player card" in the hero. */
@@ -21,6 +23,35 @@ function Barcode({ seed }: { seed: string }) {
   )
 }
 
+/**
+ * Scanner reveal: a scan line sweeps up and down while random tiles of the card resolve,
+ * until the whole card is "scanned in". The overlay removes itself when done.
+ */
+const COLS = 6
+const ROWS = 9
+function ScanIn({ go }: { go: boolean }) {
+  const [done, setDone] = useState(false)
+  const delays = useMemo(() => {
+    // Random order, spread across the sweep so pieces keep popping in until the end.
+    const n = COLS * ROWS
+    return Array.from({ length: n }, (_, i) => Math.round((i / n) * 2000 + Math.random() * 300)).sort(() => Math.random() - 0.5)
+  }, [])
+  useEffect(() => {
+    if (!go) return
+    const id = window.setTimeout(() => setDone(true), 2500)
+    return () => window.clearTimeout(id)
+  }, [go])
+  if (done) return null
+  return (
+    <div className={'op-scanin ' + (go ? 'go' : '')} style={{ '--cols': COLS, '--rows': ROWS } as React.CSSProperties} aria-hidden="true">
+      {delays.map((d, i) => (
+        <i key={i} style={{ '--d': `${d}ms` } as React.CSSProperties} />
+      ))}
+      <span className="op-scanin-line" />
+    </div>
+  )
+}
+
 function Field({ k, v, accent }: { k: string; v: string; accent?: boolean }) {
   return (
     <div className="min-w-0">
@@ -33,9 +64,11 @@ function Field({ k, v, accent }: { k: string; v: string; accent?: boolean }) {
 export default function OperatorCard() {
   const t = useT()
   const { profile, stats } = useContent()
+  const [ref, seen] = useSeen<HTMLDivElement>()
 
   return (
-    <div className="op-card reveal relative overflow-hidden" data-fx="wipe">
+    <div ref={ref} className="op-card relative overflow-hidden">
+      <ScanIn go={seen} />
       {/* Hazard header */}
       <div className="op-hazard flex items-center justify-between px-4 py-2">
         <span className="op-stencil text-sm tracking-[0.2em]">{t('Operator dossier')}</span>

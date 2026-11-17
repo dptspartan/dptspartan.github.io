@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Contact from './components/Contact'
-import Curtain, { deploy } from './components/Curtain'
+import Curtain, { deploy, pass } from './components/Curtain'
 import Divider from './components/Divider'
 import Hero from './components/Hero'
 import Loadout from './components/Loadout'
@@ -15,6 +15,14 @@ export default function App() {
   const { theme, toggle } = useTheme()
   const active = useActiveSection(IDS)
   useReveal()
+
+  // Play a quick door pass each time scrolling carries the reader into a new section.
+  const last = useRef(active)
+  useEffect(() => {
+    if (active === last.current) return
+    last.current = active
+    pass(active)
+  }, [active])
 
   // Game-style shortcuts: 1 to 5 jump to a section, T toggles the theme.
   useEffect(() => {
