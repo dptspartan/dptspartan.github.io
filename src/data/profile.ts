@@ -70,7 +70,7 @@ export const dubizzle = {
         'A CRM first built for one company, then shared with other brands in the group like OLX and Bayut. Sales teams use it to manage customers, deals, contracts and payments.',
       highlights: [
         'Updated contract and payment flows.',
-        'Made lead and customer search faster and more reliable by reworking how records are indexed.',
+        'Improved lead and customer search by reworking how records are indexed.',
         'Added report views and filters.',
       ],
       impact: [],
