@@ -129,6 +129,45 @@ export const dubizzle = {
   ] satisfies Mission[],
 }
 
+export type Gig = {
+  client: string
+  role: string
+  // TODO: dates for each gig.
+  period: string
+  about: string
+  points: string[]
+  stack: string[]
+}
+
+/** Freelance work. */
+export const freelance: Gig[] = [
+  {
+    client: 'DripSaint',
+    role: 'Freelance full stack developer',
+    period: PLACEHOLDER,
+    about:
+      'An AI powered clothing store. Shoppers type a prompt, the site creates an image with Midjourney, shows it on a t-shirt preview, and they can order it right away.',
+    points: [
+      'Prompt to image to t-shirt preview to order, all in one flow.',
+      'Image generation powered by Midjourney.',
+      'Images stored on AWS S3 through Bucketeer, app hosted on Heroku.',
+    ],
+    stack: ['React', 'Redux', 'Django', 'PostgreSQL', 'Midjourney', 'AWS S3', 'Heroku'],
+  },
+  {
+    client: 'CSOLS',
+    role: 'Freelance full stack developer',
+    period: PLACEHOLDER,
+    about: 'Built and customised their learning management system (LMS) to fit how they teach and manage students.',
+    points: [
+      'Custom LMS features on top of a Django and React app.',
+      // TODO: 1 or 2 example features (courses, quizzes, progress tracking...).
+      PLACEHOLDER,
+    ],
+    stack: ['React', 'Redux', 'Django', 'PostgreSQL', 'AWS S3', 'Heroku'],
+  },
+]
+
 export type Build = {
   title: string
   kind: string
@@ -145,20 +184,6 @@ const gh = (r: string) => `https://github.com/dptspartan/${r}`
 /** Bigger personal builds, from public repos. */
 export const builds: Build[] = [
   {
-    title: 'DLC Gaming Club',
-    kind: 'Live tournament app',
-    year: '2026',
-    about:
-      'An app to run gaming tournaments live. Players and fans see brackets and schedules, a big screen shows matches as they happen, and admins run everything from web or phone.',
-    points: [
-      'Makes the whole bracket for you, and fits matches into gaming stations and time slots.',
-      'Updates live for everyone watching, with no refresh.',
-      'Web app and mobile app share one core package, so the logic is written once.',
-    ],
-    stack: ['React', 'TypeScript', 'Expo', 'Supabase Realtime', 'PostgreSQL', 'Tailwind'],
-    repo: gh('dlc-gaming-app'),
-  },
-  {
     title: 'Us.exe',
     kind: 'Couples app · web + mobile',
     year: '2026',
@@ -171,6 +196,20 @@ export const builds: Build[] = [
     ],
     stack: ['React Native', 'Expo', 'React', 'Supabase', 'Edge Functions', 'PostgreSQL'],
     repo: gh('us-exe-mobile'),
+  },
+  {
+    title: 'DLC Gaming Club',
+    kind: 'Live tournament app',
+    year: '2026',
+    about:
+      'An app to run gaming tournaments live. Players and fans see brackets and schedules, a big screen shows matches as they happen, and admins run everything from web or phone.',
+    points: [
+      'Makes the whole bracket for you, and fits matches into gaming stations and time slots.',
+      'Updates live for everyone watching, with no refresh.',
+      'Web app and mobile app share one core package, so the logic is written once.',
+    ],
+    stack: ['React', 'TypeScript', 'Expo', 'Supabase Realtime', 'PostgreSQL', 'Tailwind'],
+    repo: gh('dlc-gaming-app'),
   },
   {
     title: 'Smart Notes',
@@ -276,9 +315,9 @@ export const projects: Project[] = [
 
 export const skills: { group: string; level: number; items: string[] }[] = [
   // TODO: adjust groups, levels (0 to 100) and items to match your current stack.
-  { group: 'Frontend', level: 90, items: ['React', 'TypeScript', 'Tailwind', 'Material UI'] },
+  { group: 'Frontend', level: 90, items: ['React', 'Redux', 'TypeScript', 'Tailwind'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
-  { group: 'Backend & data', level: 78, items: ['Supabase', 'PostgreSQL', 'Django', 'Flask', 'Python'] },
+  { group: 'Backend & data', level: 80, items: ['Django', 'PostgreSQL', 'Supabase', 'Flask', 'AWS S3', 'Heroku'] },
   { group: 'Product engineering', level: 88, items: ['Multi-tenant apps', 'Realtime', 'Internal tools'] },
   { group: 'Games & XR', level: 72, items: ['Unity', 'Unreal Engine 5', 'VR', 'Spark AR'] },
   { group: 'AI & ML', level: 65, items: ['Keras', 'TensorFlow', 'LLMs', 'OpenCV'] },
@@ -287,6 +326,7 @@ export const skills: { group: string; level: number; items: string[] }[] = [
 export const timeline: { when: string; what: string; where: string }[] = [
   // TODO: confirm dates.
   { when: PLACEHOLDER, what: 'Software Engineer', where: 'Dubizzle Labs' },
+  { when: PLACEHOLDER, what: 'Freelance developer', where: 'DripSaint · CSOLS' },
   { when: '2021 to 2025', what: 'BS Computer Science', where: 'Forman Christian College (FCCU)' },
   { when: '2022 to 2023', what: 'Co-Lead Developer', where: 'Omnilife VR Society, FCCU' },
 ]

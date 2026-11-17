@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { dubizzle, type Mission } from '../data/profile'
 import FocusDemo from './FocusDemo'
+import Freelance from './Freelance'
 import { Chip, SectionHead, Val, isTodo } from './ui'
 
 function FeatureLog({ features }: { features: Mission['features'] }) {
@@ -129,6 +130,8 @@ export default function Work() {
       </div>
 
       <FocusDemo />
+
+      <Freelance />
     </section>
   )
 }
