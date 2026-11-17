@@ -8,68 +8,61 @@ import { SECTIONS } from './Nav'
  */
 
 type Phase = 'idle' | 'closing' | 'hold' | 'opening'
-type Mode = 'jump' | 'pass'
-const listeners = new Set<(id: string, mode: Mode) => void>()
+const listeners = new Set<(id: string, y: number) => void>()
 let busy = false
-let quietUntil = Date.now() + 1200 // no pass while the page settles on load
 const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-/** Jump to a section behind the blast doors (nav clicks, keys, buttons). */
-export function deploy(id: string) {
+export const isBusy = () => busy
+
+/** Page offset of a section's top edge. */
+export const topOf = (el: Element) => el.getBoundingClientRect().top + window.scrollY
+
+/** Jump instantly, ignoring the page's smooth-scroll setting. */
+export const setScroll = (y: number) => window.scrollTo({ top: y, behavior: 'instant' })
+
+/**
+ * Jump to a section behind the blast doors. `y` is where to land (defaults to the section's top),
+ * so scrolling back up can land at the end of the previous section.
+ */
+export function deploy(id: string, y?: number) {
   const el = document.getElementById(id)
   if (!el) return
-  if (busy || listeners.size === 0 || reduced()) {
-    el.scrollIntoView({ behavior: 'auto' })
+  const to = y ?? topOf(el)
+  if (busy) return
+  if (listeners.size === 0 || reduced()) {
+    setScroll(to)
     history.replaceState(null, '', `#${id}`)
     return
   }
-  listeners.forEach((l) => l(id, 'jump'))
+  listeners.forEach((l) => l(id, to))
 }
 
-/** Quick door pass when the reader scrolls into a new section. Never moves the page. */
-export function pass(id: string) {
-  if (busy || Date.now() < quietUntil || listeners.size === 0 || reduced()) return
-  listeners.forEach((l) => l(id, 'pass'))
-}
-
-const TIMING = {
-  jump: { close: 380, hold: 260, open: 480 },
-  pass: { close: 260, hold: 180, open: 380 },
-}
+const CLOSE = 340
+const HOLD = 220
+const OPEN = 440
 
 export default function Curtain() {
   const t = useT()
   const [phase, setPhase] = useState<Phase>('idle')
   const [target, setTarget] = useState('')
-  const [mode, setMode] = useState<Mode>('jump')
 
   useEffect(() => {
-    const go = (id: string, m: Mode) => {
-      const t = TIMING[m]
+    const go = (id: string, y: number) => {
       busy = true
       setTarget(id)
-      setMode(m)
       setPhase('closing')
       window.setTimeout(() => {
         setPhase('hold')
-        if (m === 'jump') {
-          const html = document.documentElement
-          const prev = html.style.scrollBehavior
-          html.style.scrollBehavior = 'auto'
-          document.getElementById(id)?.scrollIntoView()
-          html.style.scrollBehavior = prev
-        }
+        setScroll(y)
         history.replaceState(null, '', `#${id}`)
         window.setTimeout(() => {
           setPhase('opening')
           window.setTimeout(() => {
             setPhase('idle')
             busy = false
-            // The jump itself changes the active section; don't replay a pass for it.
-            quietUntil = Date.now() + 700
-          }, t.open)
-        }, t.hold)
-      }, t.close)
+          }, OPEN)
+        }, HOLD)
+      }, CLOSE)
     }
     listeners.add(go)
     return () => {
@@ -83,11 +76,11 @@ export default function Curtain() {
   const closed = phase === 'hold' || phase === 'closing'
 
   return (
-    <div className={'curtain pointer-events-none fixed inset-0 z-[100] ' + phase + ' ' + mode} aria-hidden="true">
+    <div className={'curtain pointer-events-none fixed inset-0 z-[100] ' + phase} aria-hidden="true">
       <div className="curtain-door top" />
       <div className="curtain-door bottom" />
       <div className={'curtain-hud ' + (closed ? 'on' : '')}>
-        <div className="label !text-accent">{t(mode === 'jump' ? 'Deploying to' : 'Entering sector')}</div>
+        <div className="label !text-accent">{t('Deploying to')}</div>
         <div className="op-stencil mt-1 text-3xl text-text md:text-5xl">
           0{idx + 1} · {label}
         </div>
