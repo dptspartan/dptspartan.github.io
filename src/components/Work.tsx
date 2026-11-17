@@ -5,28 +5,18 @@ import Freelance from './Freelance'
 import { Chip, SectionHead, Val, isTodo } from './ui'
 
 function FeatureLog({ features }: { features: Mission['features'] }) {
-  const known = features.filter((f) => f.count != null && !isTodo(f.type))
-  const total = known.reduce((a, f) => a + (f.count ?? 0), 0)
-  const max = Math.max(1, ...known.map((f) => f.count ?? 0))
+  const list = features.filter((f) => !isTodo(f.type))
+  if (!list.length) return null
   return (
-    <div className="mt-8 border-t border-line pt-6">
-      <div className="mb-4 flex items-baseline justify-between">
-        <div className="label">Quest log · features shipped</div>
-        <div className="font-mono text-sm">
-          {total > 0 ? <span className="text-accent">{total} total</span> : <Val v="TODO" soon="counts soon" />}
-        </div>
-      </div>
-      <div className="grid gap-3 sm:grid-cols-3">
-        {features.map((f, i) => (
-          <div key={i} className="rounded-lg border border-line bg-bg-2/60 p-3">
-            <div className="flex items-baseline justify-between gap-2">
-              <span className="text-sm font-medium">{isTodo(f.type) ? <Val v={f.type} soon="feature type" /> : f.type}</span>
-              <span className="font-mono text-lg font-semibold text-accent">{f.count ?? '-'}</span>
-            </div>
-            <div className="mt-2 h-1 overflow-hidden rounded-full bg-line">
-              <div className="h-full rounded-full bg-accent" style={{ width: `${((f.count ?? 0) / max) * 100}%` }} />
-            </div>
-          </div>
+    <div>
+      <div className="label mb-3">Types of features I built</div>
+      <div className="flex flex-wrap gap-2">
+        {list.map((f) => (
+          <span key={f.type} className="inline-flex items-center gap-2 rounded-lg border border-line bg-bg-2/60 px-3 py-1.5 text-sm">
+            <span className="h-1.5 w-1.5 rotate-45 bg-accent" />
+            {f.type}
+            {f.count != null && <span className="font-mono text-accent">{f.count}</span>}
+          </span>
         ))}
       </div>
     </div>
@@ -45,7 +35,16 @@ export default function Work() {
         {dubizzle.intro}
       </SectionHead>
 
-      <div className="reveal grid gap-4 lg:grid-cols-[300px_1fr]">
+      <div className="reveal mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {dubizzle.totals.map((t) => (
+          <div key={t.label} className="panel p-4">
+            <div className="label !text-[10px]">{t.label}</div>
+            <div className="mt-1 text-2xl font-semibold text-accent md:text-3xl">{t.value}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="reveal grid gap-4 lg:grid-cols-[300px_1fr] lg:items-start">
         {/* Mission select */}
         <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible" role="tablist" aria-label="Dubizzle Labs work">
           {dubizzle.missions.map((mi, i) => (
@@ -70,9 +69,11 @@ export default function Work() {
             </button>
           ))}
           <div className="panel hidden p-4 lg:block">
-            <div className="label">Period</div>
-            <div className="mt-1 text-sm">
-              <Val v={dubizzle.period} soon="dates soon" />
+            <div className="label mb-2">Main stack</div>
+            <div className="flex flex-wrap gap-1.5">
+              {dubizzle.stack.map((x) => (
+                <Chip key={x}>{x}</Chip>
+              ))}
             </div>
           </div>
         </div>
@@ -106,26 +107,21 @@ export default function Work() {
               </ul>
             </div>
             <div className="space-y-6">
-              <div>
-                <div className="label mb-3">Impact</div>
-                <div className="flex flex-wrap gap-2">
-                  {m.impact.map((x, i) => (
-                    <span key={i} className="text-sm">
-                      {isTodo(x) ? <Val v={x} soon="impact numbers soon" /> : <Chip tone="accent">{x}</Chip>}
-                    </span>
-                  ))}
+              <FeatureLog features={m.features} />
+              {m.impact.length > 0 && (
+                <div>
+                  <div className="label mb-3">Impact</div>
+                  <div className="flex flex-wrap gap-2">
+                    {m.impact.map((x) => (
+                      <Chip key={x} tone="accent">
+                        {x}
+                      </Chip>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div className="label mb-3">Stack</div>
-                <div className="flex flex-wrap gap-2">
-                  {m.stack.map((x, i) => (isTodo(x) ? <Val key={i} v={x} soon="stack soon" /> : <Chip key={x}>{x}</Chip>))}
-                </div>
-              </div>
+              )}
             </div>
           </div>
-
-          <FeatureLog features={m.features} />
         </article>
       </div>
 

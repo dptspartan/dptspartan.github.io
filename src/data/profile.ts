@@ -33,10 +33,8 @@ export const profile = {
 export const stats: { label: string; value: string; hint?: string }[] = [
   { label: 'Public repos', value: '33', hint: 'on github.com/dptspartan' },
   { label: 'Brands served', value: 'OLX · Bayut · Zameen', hint: 'through my work at Dubizzle Labs' },
-  // TODO: e.g. "250+" merged PRs from your work account.
-  { label: 'PRs merged', value: PLACEHOLDER },
-  // TODO: years of professional experience.
-  { label: 'Years in prod', value: PLACEHOLDER },
+  { label: 'PRs merged', value: '251', hint: 'at Dubizzle Labs' },
+  { label: 'Commits', value: '670+', hint: 'since March 2026' },
 ]
 
 export type Mission = {
@@ -55,10 +53,16 @@ export type Mission = {
 /** Main quest: Dubizzle Labs. Overviews only. */
 export const dubizzle = {
   company: 'Dubizzle Labs',
-  // TODO: your start date, e.g. "2024 to now".
-  period: PLACEHOLDER,
+  period: 'Mar 2026 to now',
   intro:
-    'Most of my work at Dubizzle Labs has been on the CRM systems used by big property and classifieds brands, along with other projects. This work is private, so below are simple overviews of what I built. No code.',
+    'At Dubizzle Labs I work across the CRM and property products used by big brands like OLX, Bayut and Zameen. This work is private, so below are simple overviews of what I built. No code.',
+  totals: [
+    { label: 'PRs merged', value: '251' },
+    { label: 'PRs opened', value: '290' },
+    { label: 'Commits', value: '670+' },
+    { label: 'Since', value: 'Mar 2026' },
+  ],
+  stack: ['React', 'JavaScript', 'Ruby', 'SCSS', 'HTML'],
   missions: [
     {
       id: 'group-crm',
@@ -66,22 +70,21 @@ export const dubizzle = {
       title: 'Shared CRM',
       kind: 'Used by many brands',
       summary:
-        'A CRM first built for one company, then shared with other brands in the group like OLX and Bayut. Each brand now runs its sales team on the same system.',
+        'A CRM first built for one company, then shared with other brands in the group like OLX and Bayut. Sales teams use it to manage customers, deals, contracts and payments.',
       highlights: [
-        'Made a single-brand CRM ready for other companies to use.',
-        'Kept brand differences in settings, so there is still one codebase.',
-        // TODO: 1 or 2 things you personally owned.
-        PLACEHOLDER,
+        'Updated contract and payment flows.',
+        'Made lead and customer search better and more reliable.',
+        'Added report views and filters.',
       ],
-      // TODO: measurable impact.
-      impact: [PLACEHOLDER],
-      // TODO: real stack.
-      stack: [PLACEHOLDER],
-      // TODO: feature types and counts (null shows "count soon").
+      impact: [],
+      stack: [],
       features: [
-        { type: PLACEHOLDER, count: null },
-        { type: PLACEHOLDER, count: null },
-        { type: PLACEHOLDER, count: null },
+        { type: 'Screens', count: null },
+        { type: 'Workflows', count: null },
+        { type: 'Roles & permissions', count: null },
+        { type: 'Search', count: null },
+        { type: 'Reporting', count: null },
+        { type: 'Refactoring', count: null },
       ],
     },
     {
@@ -94,15 +97,13 @@ export const dubizzle = {
       highlights: [
         'One system that serves many separate projects.',
         'Each project can set up its own teams, roles and sales stages.',
-        // TODO: what you built in Jarvis.
-        PLACEHOLDER,
       ],
-      impact: [PLACEHOLDER],
-      stack: [PLACEHOLDER],
+      impact: [],
+      stack: [],
       features: [
-        { type: PLACEHOLDER, count: null },
-        { type: PLACEHOLDER, count: null },
-        { type: PLACEHOLDER, count: null },
+        { type: 'Multi-tenancy', count: null },
+        { type: 'Roles & permissions', count: null },
+        { type: 'Workflows', count: null },
       ],
     },
     {
@@ -111,19 +112,76 @@ export const dubizzle = {
       title: 'Focus Mode',
       kind: 'Built by me, start to finish',
       summary:
-        'I built Focus Mode from scratch. It puts every main CRM task on one screen, so agents can handle leads, calls, follow-ups and deals without jumping between pages.',
+        'I built Focus Mode from scratch. It puts every main CRM task on one screen, so sales agents can plan their day and work through leads, calls, follow-ups and deals without jumping between pages.',
       highlights: [
         'All the main CRM tasks in one place.',
-        'Actions happen right there, so the user never loses their place.',
-        // TODO: hard technical problems you solved.
-        PLACEHOLDER,
+        'Task checks that change based on the user role and the state of the task.',
+        'Built-in timers to help agents plan and track their work.',
       ],
-      impact: [PLACEHOLDER],
-      stack: [PLACEHOLDER],
+      impact: [],
+      stack: [],
       features: [
-        { type: PLACEHOLDER, count: null },
-        { type: PLACEHOLDER, count: null },
-        { type: PLACEHOLDER, count: null },
+        { type: 'Screens', count: null },
+        { type: 'Workflows', count: null },
+        { type: 'Role-based checks', count: null },
+        { type: 'Timers', count: null },
+      ],
+    },
+    {
+      id: 'outreach',
+      code: 'M-04',
+      title: 'Outreach & campaigns',
+      kind: 'Sales tools',
+      summary: 'Tools that help sales teams plan and schedule messages to customers.',
+      highlights: [
+        'Scheduled campaign flows.',
+        'Personalised message content for each customer.',
+        'Campaign details and quick lookups.',
+      ],
+      impact: [],
+      stack: [],
+      features: [
+        { type: 'Workflows', count: null },
+        { type: 'Screens', count: null },
+        { type: 'Personalisation', count: null },
+      ],
+    },
+    {
+      id: 'property',
+      code: 'M-05',
+      title: 'Property & listings',
+      kind: 'Customer-facing web',
+      summary: 'Web pages where people browse property listings, look at investment info and complete seller tasks.',
+      highlights: [
+        'New investment and listing pages.',
+        'Better mobile panels and action buttons.',
+        'A preview step for the seller form.',
+      ],
+      impact: [],
+      stack: [],
+      features: [
+        { type: 'Screens', count: null },
+        { type: 'Search & filters', count: null },
+        { type: 'Mobile layout', count: null },
+      ],
+    },
+    {
+      id: 'finance',
+      code: 'M-06',
+      title: 'Payments & finance',
+      kind: 'Internal workflows',
+      summary: 'Flows used by finance teams to review and approve payments.',
+      highlights: [
+        'Added a finance approval step.',
+        'Updated who can pay and when.',
+        'Clearer payment confirmation messages.',
+      ],
+      impact: [],
+      stack: [],
+      features: [
+        { type: 'Workflows', count: null },
+        { type: 'Permissions', count: null },
+        { type: 'Screens', count: null },
       ],
     },
   ] satisfies Mission[],
@@ -181,7 +239,7 @@ export type Build = {
 
 const gh = (r: string) => `https://github.com/dptspartan/${r}`
 
-/** Bigger personal builds, from public repos. */
+/** Bigger personal builds. Harmony is a private repo, so it has no code link. */
 export const builds: Build[] = [
   {
     title: 'Us.exe',
@@ -196,6 +254,20 @@ export const builds: Build[] = [
     ],
     stack: ['React Native', 'Expo', 'React', 'Supabase', 'Edge Functions', 'PostgreSQL'],
     repo: gh('us-exe-mobile'),
+  },
+  {
+    title: 'Harmony',
+    kind: 'Self-hosted AI assistant',
+    year: '2026',
+    about:
+      'My own AI assistant that runs on my own server, not in the cloud. You chat with it like a person, it remembers what matters, and it uses tools to get real things done.',
+    points: [
+      'Runs a local model (Qwen 3) through Ollama, so my data stays with me.',
+      'Long-term memory in Postgres, rebuilt into a fresh context before every reply.',
+      'An agent loop with a searchable tool registry. Every tool has a risk level, and only safe ones run without my approval.',
+      'A coding sandbox where it can build a small website and hand back the link.',
+    ],
+    stack: ['Python', 'FastAPI', 'Ollama', 'Qwen 3', 'PostgreSQL', 'Docker'],
   },
   {
     title: 'DLC Gaming Club',
@@ -325,7 +397,7 @@ export const skills: { group: string; level: number; items: string[] }[] = [
 
 export const timeline: { when: string; what: string; where: string }[] = [
   // TODO: confirm dates.
-  { when: PLACEHOLDER, what: 'Software Engineer', where: 'Dubizzle Labs' },
+  { when: 'Mar 2026 to now', what: 'Software Engineer', where: 'Dubizzle Labs' },
   { when: PLACEHOLDER, what: 'Freelance developer', where: 'DripSaint · CSOLS' },
   { when: '2021 to 2025', what: 'BS Computer Science', where: 'Forman Christian College (FCCU)' },
   { when: '2022 to 2023', what: 'Co-Lead Developer', where: 'Omnilife VR Society, FCCU' },
