@@ -100,7 +100,6 @@ export const dubizzle = {
           points: [
             'Lead and customer search powered by Elasticsearch.',
             'Reworked how records are indexed so search results stay accurate.',
-            'Search that respects each tenant and user role.',
           ],
         },
         {
