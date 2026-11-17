@@ -233,5 +233,10 @@
  "Entering sector": "سیکٹر میں داخلہ",
  "Report views for sales teams and managers, powered by Elasticsearch.": "سیلز ٹیموں اور مینیجرز کے لیے رپورٹ ویوز، جو Elasticsearch سے چلتی ہیں۔",
  "Need a break from looking at my work? Here is a little fun for you.": "میرا کام دیکھ دیکھ کر تھک گئے؟ یہ رہا آپ کے لیے تھوڑا سا مزہ۔",
- "Take a drive": "ایک ڈرائیو کریں"
+ "Take a drive": "ایک ڈرائیو کریں",
+ "3D driving game · Unity": "3D ڈرائیونگ گیم · Unity",
+ "A 3D driving game made in Unity that runs right in the browser. No download, just open it and play.": "Unity سے بنی 3D ڈرائیونگ گیم جو سیدھی براؤزر میں چلتی ہے۔ کوئی ڈاؤن لوڈ نہیں، بس کھولیں اور کھیلیں۔",
+ "Built with Unity 6 and shipped as a full-screen WebGL build.": "Unity 6 سے بنی اور فل اسکرین WebGL بلڈ کے طور پر جاری کی گئی۔",
+ "Every release is built and deployed automatically with GitHub Actions.": "ہر ریلیز GitHub Actions کے ذریعے خودکار طور پر بنتی اور لگتی ہے۔",
+ "Compressed build with a fallback, so it loads on any host.": "فال بیک کے ساتھ کمپریسڈ بلڈ، تاکہ یہ ہر ہوسٹ پر لوڈ ہو۔"
 }

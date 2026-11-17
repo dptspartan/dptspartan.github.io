@@ -247,6 +247,19 @@ export const builds: Build[] = [
     repo: gh('dlc-gaming-app'),
   },
   {
+    title: 'Drive in Office',
+    kind: '3D driving game · Unity',
+    year: '2026',
+    about: 'A 3D driving game made in Unity that runs right in the browser. No download, just open it and play.',
+    points: [
+      'Built with Unity 6 and shipped as a full-screen WebGL build.',
+      'Every release is built and deployed automatically with GitHub Actions.',
+      'Compressed build with a fallback, so it loads on any host.',
+    ],
+    stack: ['Unity', 'C#', 'WebGL', 'GitHub Actions'],
+    repo: gh('DriveInOffice'),
+  },
+  {
     title: 'Smart Notes',
     kind: 'AI notes app',
     year: '2025',
