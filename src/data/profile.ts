@@ -48,6 +48,8 @@ export type Mission = {
   highlights: string[]
   impact: string[]
   stack: string[]
+  /** Feature counts by type, e.g. { type: 'Workflow automation', count: 12 }. Types only, no business specifics. */
+  features: { type: string; count: number | null }[]
 }
 
 /** Main quest: Dubizzle Labs. Overviews only. */
@@ -75,6 +77,12 @@ export const dubizzle = {
       impact: [PLACEHOLDER],
       // TODO: list the real stack.
       stack: [PLACEHOLDER],
+      // TODO: replace with your real feature types and counts (null shows "count soon").
+      features: [
+        { type: PLACEHOLDER, count: null },
+        { type: PLACEHOLDER, count: null },
+        { type: PLACEHOLDER, count: null },
+      ],
     },
     {
       id: 'jarvis',
@@ -91,6 +99,12 @@ export const dubizzle = {
       ],
       impact: [PLACEHOLDER],
       stack: [PLACEHOLDER],
+      // TODO: feature types and counts.
+      features: [
+        { type: PLACEHOLDER, count: null },
+        { type: PLACEHOLDER, count: null },
+        { type: PLACEHOLDER, count: null },
+      ],
     },
     {
       id: 'focus-mode',
@@ -107,6 +121,12 @@ export const dubizzle = {
       ],
       impact: [PLACEHOLDER],
       stack: [PLACEHOLDER],
+      // TODO: feature types and counts.
+      features: [
+        { type: PLACEHOLDER, count: null },
+        { type: PLACEHOLDER, count: null },
+        { type: PLACEHOLDER, count: null },
+      ],
     },
   ] satisfies Mission[],
 }

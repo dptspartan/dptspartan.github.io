@@ -1,7 +1,36 @@
 import { useState } from 'react'
-import { dubizzle } from '../data/profile'
+import { dubizzle, type Mission } from '../data/profile'
 import FocusDemo from './FocusDemo'
 import { Chip, SectionHead, Val, isTodo } from './ui'
+
+function FeatureLog({ features }: { features: Mission['features'] }) {
+  const known = features.filter((f) => f.count != null && !isTodo(f.type))
+  const total = known.reduce((a, f) => a + (f.count ?? 0), 0)
+  const max = Math.max(1, ...known.map((f) => f.count ?? 0))
+  return (
+    <div className="mt-8 border-t border-line pt-6">
+      <div className="mb-4 flex items-baseline justify-between">
+        <div className="label">Quest log · features shipped by type</div>
+        <div className="font-mono text-sm">
+          {total > 0 ? <span className="text-accent">{total} total</span> : <Val v="TODO" soon="counts soon" />}
+        </div>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {features.map((f, i) => (
+          <div key={i} className="rounded-lg border border-line bg-bg-2/60 p-3">
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="text-sm font-medium">{isTodo(f.type) ? <Val v={f.type} soon="feature type" /> : f.type}</span>
+              <span className="font-mono text-lg font-semibold text-accent">{f.count ?? '–'}</span>
+            </div>
+            <div className="mt-2 h-1 overflow-hidden rounded-full bg-line">
+              <div className="h-full rounded-full bg-accent" style={{ width: `${((f.count ?? 0) / max) * 100}%` }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function Work() {
   const [sel, setSel] = useState(0)
@@ -94,6 +123,8 @@ export default function Work() {
               </div>
             </div>
           </div>
+
+          <FeatureLog features={m.features} />
         </article>
       </div>
 
