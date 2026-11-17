@@ -1,17 +1,19 @@
-import { achievements, skills, timeline } from '../data/profile'
 import { useSeen } from '../hooks'
+import { useContent, useT } from '../i18n'
 import { SectionHead, Val } from './ui'
 
 export default function Loadout() {
   const [ref, seen] = useSeen<HTMLDivElement>()
+  const t = useT()
+  const { achievements, skills, timeline } = useContent()
 
   return (
     <section id="loadout" className="mx-auto max-w-6xl px-4 py-24 md:py-32">
-      <SectionHead index="04" kicker="Loadout" title="Skills, history and achievements" />
+      <SectionHead index="04" kicker={t('Loadout')} title={t('Skills, history and achievements')} fx="glitch" />
 
       <div className="grid gap-4 lg:grid-cols-[1.3fr_1fr]">
         <div ref={ref} className="panel hud reveal p-6">
-          <div className="label mb-5">Skill tree</div>
+          <div className="label mb-5">{t('Skill tree')}</div>
           <div className="space-y-5">
             {skills.map((s) => (
               <div key={s.group}>
@@ -37,22 +39,22 @@ export default function Loadout() {
 
         <div className="grid gap-4">
           <div className="panel reveal p-6">
-            <div className="label mb-4">Timeline</div>
-            <ol className="relative space-y-5 border-l border-line pl-5">
-              {timeline.map((t) => (
-                <li key={t.what + t.where} className="relative">
-                  <span className="absolute top-1.5 -left-[25px] h-2 w-2 rotate-45 bg-accent" />
+            <div className="label mb-4">{t('Timeline')}</div>
+            <ol className="relative space-y-5 border-s border-line ps-5">
+              {timeline.map((x) => (
+                <li key={x.what + x.where} className="relative">
+                  <span className="absolute top-1.5 -start-[25px] h-2 w-2 rotate-45 bg-accent" />
                   <div className="font-mono text-xs text-muted">
-                    <Val v={t.when} soon="dates soon" />
+                    <Val v={x.when} soon="dates soon" />
                   </div>
-                  <div className="mt-0.5 font-medium">{t.what}</div>
-                  <div className="text-sm text-muted">{t.where}</div>
+                  <div className="mt-0.5 font-medium">{x.what}</div>
+                  <div className="text-sm text-muted">{x.where}</div>
                 </li>
               ))}
             </ol>
           </div>
           <div className="panel reveal p-6">
-            <div className="label mb-4">Achievements unlocked</div>
+            <div className="label mb-4">{t('Achievements unlocked')}</div>
             <div className="grid grid-cols-2 gap-3">
               {achievements.map((a) => (
                 <div key={a.title} className="rounded-lg border border-line bg-bg-2/60 p-3">

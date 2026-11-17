@@ -1,31 +1,33 @@
 import { useState } from 'react'
-import { dubizzle } from '../data/profile'
+import { useContent, useT } from '../i18n'
 import FocusDemo from './FocusDemo'
 import Freelance from './Freelance'
 import { Chip, SectionHead } from './ui'
 
 export default function Work() {
   const [sel, setSel] = useState(0)
+  const t = useT()
+  const { dubizzle } = useContent()
   const m = dubizzle.missions[sel]
 
   return (
     <section id="work" className="relative mx-auto max-w-6xl px-4 py-24 md:py-32">
-      <SectionHead index="02" kicker={`Main quest · ${dubizzle.company}`} title="Selected work at Dubizzle Labs">
+      <SectionHead index="02" kicker={`${t('Main quest')} · ${dubizzle.company}`} title={t('Selected work at Dubizzle Labs')} fx="wipe">
         {dubizzle.intro}
       </SectionHead>
 
       <div className="reveal mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {dubizzle.totals.map((t) => (
-          <div key={t.label} className="panel p-4">
-            <div className="label !text-[10px]">{t.label}</div>
-            <div className="mt-1 text-2xl font-semibold text-accent md:text-3xl">{t.value}</div>
+        {dubizzle.totals.map((x) => (
+          <div key={x.label} className="panel p-4">
+            <div className="label !text-[10px]">{x.label}</div>
+            <div className="mt-1 text-2xl font-semibold text-accent md:text-3xl">{x.value}</div>
           </div>
         ))}
       </div>
 
       <div className="reveal grid gap-4 lg:grid-cols-[300px_1fr] lg:items-start">
         {/* Mission select */}
-        <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible" role="tablist" aria-label="Dubizzle Labs work">
+        <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible" role="tablist" aria-label={t('Selected work at Dubizzle Labs')}>
           {dubizzle.missions.map((mi, i) => (
             <button
               key={mi.id}
@@ -34,7 +36,7 @@ export default function Work() {
               aria-controls="mission-panel"
               onClick={() => setSel(i)}
               className={
-                'panel min-w-[200px] flex-1 p-4 text-left transition lg:min-w-0 lg:flex-none ' +
+                'panel min-w-[200px] flex-1 p-4 text-start transition lg:min-w-0 lg:flex-none ' +
                 (sel === i ? '!border-accent' : 'hover:!border-line-strong')
               }
               style={sel === i ? { boxShadow: 'var(--glow)' } : undefined}
@@ -64,7 +66,7 @@ export default function Work() {
             ))}
           </div>
 
-          <div className="label mt-8 mb-3">What I built</div>
+          <div className="label mt-8 mb-3">{t('What I built')}</div>
           <div className="grid gap-3 md:grid-cols-2">
             {m.modules.map((mod) => (
               <div key={mod.name} className="rounded-xl border border-line bg-bg-2/60 p-4">

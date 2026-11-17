@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useT } from '../i18n'
 
 /**
  * A playable, illustrative take on the idea behind Focus Mode: every core CRM flow on one
@@ -22,6 +23,7 @@ type Event = { id: number; text: string; when: string }
 
 export default function FocusDemo() {
   const [lead, setLead] = useState(0)
+  const t = useT()
   const [stage, setStage] = useState<number[]>([1, 0, 2])
   const [log, setLog] = useState<Record<number, Event[]>>({
     0: [{ id: 1, text: 'Lead created from listing inquiry', when: '09:12' }],
@@ -41,17 +43,17 @@ export default function FocusDemo() {
   }
 
   return (
-    <div className="reveal mt-16">
+    <div className="reveal mt-16" data-fx="scan">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <div className="label">Playable demo · Jarvis · Focus Mode</div>
-          <h3 className="mt-1 text-2xl font-semibold">Focus Mode, in mini</h3>
+          <div className="label">{t('Playable demo')} · Jarvis · Focus Mode</div>
+          <h3 className="mt-1 text-2xl font-semibold">{t('Focus Mode, in mini')}</h3>
           <p className="mt-2 max-w-2xl text-sm text-muted">
-            The idea is simple: do everything from one screen. Pick a lead, move it along, and take actions without leaving the page. Try it.
+            {t('The idea is simple: do everything from one screen. Pick a lead, move it along, and take actions without leaving the page. Try it.')}
           </p>
         </div>
         <span className="rounded-md border border-dashed border-line-strong px-2 py-1 font-mono text-[11px] text-muted">
-          Concept demo · sample data
+          {t('Concept demo · sample data')}
         </span>
       </div>
 
@@ -61,13 +63,13 @@ export default function FocusDemo() {
           <span className="h-2.5 w-2.5 rounded-full bg-accent-3/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-accent-2/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
-          <span className="ml-3 font-mono text-xs text-muted">focus-mode · 1 screen · {LEADS.length} leads</span>
+          <span className="ms-3 font-mono text-xs text-muted">focus-mode · {LEADS.length}</span>
         </div>
 
         <div className="grid md:grid-cols-[220px_1fr_260px]">
           {/* Queue */}
-          <div className="border-b border-line p-3 md:border-r md:border-b-0">
-            <div className="label mb-2 px-1">Queue</div>
+          <div className="border-b border-line p-3 md:border-e md:border-b-0">
+            <div className="label mb-2 px-1">{t('Queue')}</div>
             <div className="flex gap-2 overflow-x-auto md:flex-col">
               {LEADS.map((l, i) => (
                 <button
@@ -75,13 +77,13 @@ export default function FocusDemo() {
                   onClick={() => setLead(i)}
                   aria-pressed={lead === i}
                   className={
-                    'min-w-[150px] rounded-lg border p-2.5 text-left transition md:min-w-0 ' +
+                    'min-w-[150px] rounded-lg border p-2.5 text-start transition md:min-w-0 ' +
                     (lead === i ? 'border-accent bg-accent/10' : 'border-line hover:border-line-strong')
                   }
                 >
                   <div className="text-sm font-medium">{l.name}</div>
-                  <div className="text-[11px] text-muted">{l.want}</div>
-                  <div className="mt-1 font-mono text-[10px] text-accent-2">{STAGES[stage[i]]}</div>
+                  <div className="text-[11px] text-muted">{t(l.want)}</div>
+                  <div className="mt-1 font-mono text-[10px] text-accent-2">{t(STAGES[stage[i]])}</div>
                 </button>
               ))}
             </div>
@@ -95,9 +97,9 @@ export default function FocusDemo() {
                 {L.area} · {L.budget}
               </div>
             </div>
-            <div className="mt-1 text-sm text-muted">Looking for: {L.want}</div>
+            <div className="mt-1 text-sm text-muted">{t('Looking for')}: {t(L.want)}</div>
 
-            <div className="label mt-5 mb-2">Pipeline</div>
+            <div className="label mt-5 mb-2">{t('Pipeline')}</div>
             <div className="grid grid-cols-5 gap-1">
               {STAGES.map((s, i) => (
                 <button
@@ -108,12 +110,12 @@ export default function FocusDemo() {
                     (i <= stage[lead] ? 'bg-accent text-accent-ink' : 'bg-line text-muted hover:text-text')
                   }
                 >
-                  {s}
+                  {t(s)}
                 </button>
               ))}
             </div>
 
-            <div className="label mt-5 mb-2">Actions · in place</div>
+            <div className="label mt-5 mb-2">{t('Actions · in place')}</div>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {ACTIONS.map((a) => (
                 <button
@@ -124,20 +126,20 @@ export default function FocusDemo() {
                     (flash === a.key ? 'border-accent bg-accent/15 text-accent' : 'border-line-strong hover:border-accent hover:text-accent')
                   }
                 >
-                  {a.label}
+                  {t(a.label)}
                 </button>
               ))}
             </div>
           </div>
 
           {/* Timeline */}
-          <div className="p-4 md:border-l md:border-line">
-            <div className="label mb-3">Activity</div>
+          <div className="p-4 md:border-s md:border-line">
+            <div className="label mb-3">{t('Activity')}</div>
             <ol className="space-y-3" aria-live="polite">
               {(log[lead] || []).map((e) => (
                 <li key={e.id} className="flex gap-3 text-xs">
-                  <span className="font-mono text-muted">{e.when}</span>
-                  <span>{e.text}</span>
+                  <span className="font-mono text-muted">{t(e.when)}</span>
+                  <span>{t(e.text)}</span>
                 </li>
               ))}
             </ol>

@@ -1,11 +1,13 @@
-import { freelance, studio } from '../data/profile'
+import { useContent, useT } from '../i18n'
 import { Chip, isTodo } from './ui'
 
 export default function Freelance() {
+  const t = useT()
+  const { freelance, studio } = useContent()
   return (
     <div className="mt-20">
-      <div className="reveal mb-6">
-        <div className="label">Before Dubizzle · {studio.period}</div>
+      <div className="reveal mb-6" data-fx="scan">
+        <div className="label">{t('Before Dubizzle')} · {studio.period}</div>
         <h3 className="mt-1 text-2xl font-semibold">
           {studio.name} <span className="text-muted">· {studio.role}</span>
         </h3>
