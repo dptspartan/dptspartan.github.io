@@ -27,10 +27,10 @@ export const profile = {
 
 /** HUD stats in the hero. Use a string value of PLACEHOLDER until you have the real number. */
 export const stats: { label: string; value: string; hint?: string }[] = [
-  { label: 'Public repos', value: '33', hint: 'on github.com/dptspartan' },
-  { label: 'Brands served', value: 'OLX · Bayut · Zameen', hint: 'through my work at Dubizzle Labs' },
   { label: 'PRs merged', value: '251', hint: 'at Dubizzle Labs' },
-  { label: 'Commits', value: '670+', hint: 'since March 2026' },
+  { label: 'Commits', value: '670+', hint: 'at Dubizzle Labs' },
+  { label: 'Building since', value: '2023', hint: 'CSOLS, ClickSotic, Dubizzle' },
+  { label: 'Public repos', value: '33', hint: 'on GitHub' },
 ]
 
 export type Mission = {
@@ -51,7 +51,7 @@ export const dubizzle = {
   company: 'Dubizzle Labs',
   period: 'Mar 2026 to now',
   intro:
-    'I build front end apps on very large codebases used by hundreds of thousands of people at once. My main work is on multi-tenant CRMs for brands like OLX, Bayut and Zameen, plus LMS platforms, merchant portals and customer-facing pages. This work is private, so below are simple overviews. No code.',
+    'I build front end apps on very large codebases used by hundreds of thousands of people at once. My main work is on multi-tenant CRMs, plus LMS platforms, merchant portals and customer-facing pages. This work is private, so below are simple overviews. No code.',
   totals: [
     { label: 'PRs merged', value: '251' },
     { label: 'PRs opened', value: '290' },
