@@ -5,7 +5,7 @@ import { Icon, Val } from './ui'
 
 const CoreScene = lazy(() => import('./CoreScene'))
 
-const ROLES = ['products people use daily.', 'multi-tenant platforms.', 'fast, focused UIs.', 'games & XR, for fun.']
+const ROLES = ['full stack products.', 'Rails back ends.', 'React front ends.', 'products end to end.']
 
 export default function Hero({ theme }: { theme: string }) {
   const typed = useTypewriter(ROLES)
@@ -40,6 +40,13 @@ export default function Hero({ theme }: { theme: string }) {
             <span className="caret text-accent-2">▍</span>
           </p>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{profile.tagline}</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {profile.strengths.map((x) => (
+              <span key={x} className="rounded-md border border-accent/40 px-2.5 py-1 font-mono text-xs text-accent">
+                {x}
+              </span>
+            ))}
+          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#work"

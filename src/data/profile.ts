@@ -16,13 +16,14 @@ export const profile = {
   company: 'Dubizzle Labs',
   location: 'Lahore, Pakistan',
   tagline:
-    'I build apps people use every day. I like taking something complicated and making it feel simple.',
+    'Full stack developer who takes products from idea to live. Ruby on Rails and React at work, plus my own DevOps, and years of working straight with clients. I ship fast, clean and reliable.',
+  strengths: ['Full stack', 'Ruby on Rails + React', 'DevOps', 'Client-facing'],
   github: 'https://github.com/dptspartan',
   linkedin: 'https://www.linkedin.com/in/shoaib-rashid-5932a51b3',
   email: 'shoaib.lahore90@gmail.com',
   resume: '/resume.pdf',
   avatar: '/assets/img/shoaib.jpg',
-  status: 'Shipping at Dubizzle Labs',
+  status: 'Full stack at Dubizzle Labs',
 }
 
 /** HUD stats in the hero. Use a string value of PLACEHOLDER until you have the real number. */
@@ -51,14 +52,14 @@ export const dubizzle = {
   company: 'Dubizzle Labs',
   period: 'Mar 2026 to now',
   intro:
-    'I build front end apps on very large codebases used by hundreds of thousands of people at once. My main work is on multi-tenant CRMs, plus LMS platforms, merchant portals and customer-facing pages. This work is private, so below are simple overviews. No code.',
+    'I work full stack on very large codebases used by hundreds of thousands of people at once, with Ruby on Rails on the back end and React on the front. My main work is multi-tenant CRMs, plus LMS platforms, merchant portals and customer-facing pages. This work is private, so below are simple overviews. No code.',
   totals: [
     { label: 'PRs merged', value: '251' },
     { label: 'PRs opened', value: '290' },
     { label: 'Commits', value: '670+' },
     { label: 'Since', value: 'Mar 2026' },
   ],
-  stack: ['React', 'Redux Toolkit', 'JavaScript', 'Micro frontends', 'i18n', 'Feature flags', 'SCSS'],
+  stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'JavaScript', 'Micro frontends', 'i18n', 'Feature flags'],
   missions: [
     {
       id: 'group-crm',
@@ -197,7 +198,7 @@ export const studio = {
   role: 'Founder and software developer',
   period: 'Mar 2024 to Mar 2026',
   about:
-    'I started and ran my own software studio. I handled the tech plans, system design and talking to clients abroad, and led a small team.',
+    'I started and ran my own software studio. I worked directly with clients abroad, turned their ideas into plans, designed the systems, led a small team, and handled deployment and hosting end to end.',
 }
 
 export const freelance: Gig[] = [
@@ -394,11 +395,11 @@ export const projects: Project[] = [
 ]
 
 export const skills: { group: string; level: number; items: string[] }[] = [
-  // TODO: adjust groups, levels (0 to 100) and items to match your current stack.
   { group: 'Frontend', level: 92, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
+  { group: 'Backend & data', level: 86, items: ['Ruby on Rails', 'Django REST', 'PostgreSQL', 'Supabase', 'Celery'] },
+  { group: 'DevOps & cloud', level: 78, items: ['Docker', 'GitHub Actions', 'Heroku', 'AWS S3', 'Vercel', 'Linux'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
-  { group: 'Backend & data', level: 80, items: ['Django REST', 'PostgreSQL', 'Supabase', 'Celery', 'Docker', 'AWS S3'] },
-  { group: 'Product engineering', level: 88, items: ['Multi-tenant apps', 'Micro frontends', 'i18n', 'Feature flags'] },
+  { group: 'Client work', level: 85, items: ['Requirements', 'Planning', 'Team lead', 'Delivery'] },
   { group: 'Games & XR', level: 72, items: ['Unity', 'Unreal Engine', 'ARCore', 'VR'] },
   { group: 'AI & ML', level: 65, items: ['Keras', 'TensorFlow', 'LLMs', 'OpenCV'] },
 ]
