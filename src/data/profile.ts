@@ -40,11 +40,9 @@ export type Mission = {
   title: string
   kind: string
   summary: string
-  highlights: string[]
-  impact: string[]
   stack: string[]
-  /** Feature counts by type, e.g. { type: 'Workflow automation', count: 12 }. Types only, no business specifics. */
-  features: { type: string; count: number | null }[]
+  /** Features inside the project. */
+  modules: { name: string; tag?: string; points: string[] }[]
 }
 
 /** Main quest: Dubizzle Labs. Overviews only. */
@@ -62,123 +60,75 @@ export const dubizzle = {
   stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'REST APIs', 'Multi-tenancy', 'i18n', 'Feature flags'],
   missions: [
     {
-      id: 'group-crm',
-      code: 'M-01',
-      title: 'Shared CRM',
-      kind: 'Used by many brands',
-      summary:
-        'A CRM first built for one company, then shared with other brands in the group like OLX and Bayut. Sales teams use it to manage customers, deals, contracts and payments.',
-      highlights: [
-        'Updated contract and payment flows.',
-        'Improved lead and customer search by reworking how records are indexed.',
-        'Added report views and filters.',
-      ],
-      impact: [],
-      stack: [],
-      features: [
-        { type: 'Screens', count: null },
-        { type: 'Workflows', count: null },
-        { type: 'Roles & permissions', count: null },
-        { type: 'Search', count: null },
-        { type: 'Reporting', count: null },
-        { type: 'Refactoring', count: null },
-      ],
-    },
-    {
       id: 'jarvis',
-      code: 'M-02',
+      code: 'P-01',
       title: 'Jarvis',
-      kind: 'Multi-tenant CRM',
+      kind: 'Full stack · multi-tenant CRM',
       summary:
-        'The CRM for all Zameen projects. Each project is its own tenant, with its own data, users and settings, but they all run on one platform.',
-      highlights: [
-        'One system that serves many separate projects.',
-        'Each project can set up its own teams, roles and sales stages.',
-      ],
-      impact: [],
-      stack: [],
-      features: [
-        { type: 'Multi-tenancy', count: null },
-        { type: 'Roles & permissions', count: null },
-        { type: 'Workflows', count: null },
+        'The shared CRM behind all Zameen projects, later rolled out to other group brands like OLX and Bayut. Every project runs as its own tenant with its own data, users and settings, all on one platform. I work on it end to end, from Rails APIs to React screens.',
+      stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'REST APIs', 'Multi-tenancy'],
+      modules: [
+        {
+          name: 'Focus Mode',
+          tag: 'Built from scratch',
+          points: [
+            'One screen with every main CRM flow, so agents never jump between pages.',
+            'Daily sales planning with built-in timers.',
+            'Task checks that change with the user role and task state.',
+          ],
+        },
+        {
+          name: 'Outreach & campaigns',
+          tag: 'Inside Focus Mode',
+          points: [
+            'Scheduled campaign flows.',
+            'Personalised messages for each customer.',
+            'Campaign details and quick lookups.',
+          ],
+        },
+        {
+          name: 'Contracts, payments & finance',
+          points: [
+            'Contract and payment flows.',
+            'A finance approval step and payment eligibility rules.',
+            'Clearer payment confirmations.',
+          ],
+        },
+        {
+          name: 'Search, reports & access',
+          points: [
+            'Improved lead and customer search by reworking how records are indexed.',
+            'Report views and filters.',
+            'Roles and permissions across tenants.',
+          ],
+        },
       ],
     },
     {
-      id: 'focus-mode',
-      code: 'M-03',
-      title: 'Focus Mode',
-      kind: 'Built by me, start to finish',
+      id: 'investors-hub',
+      code: 'P-02',
+      title: 'Investors Hub',
+      kind: 'Front end · customer-facing web',
       summary:
-        'I built Focus Mode from scratch. It puts every main CRM task on one screen, so sales agents can plan their day and work through leads, calls, follow-ups and deals without jumping between pages.',
-      highlights: [
-        'All the main CRM tasks in one place.',
-        'Task checks that change based on the user role and the state of the task.',
-        'Built-in timers to help agents plan and track their work.',
-      ],
-      impact: [],
-      stack: [],
-      features: [
-        { type: 'Screens', count: null },
-        { type: 'Workflows', count: null },
-        { type: 'Role-based checks', count: null },
-        { type: 'Timers', count: null },
-      ],
-    },
-    {
-      id: 'outreach',
-      code: 'M-04',
-      title: 'Outreach & campaigns',
-      kind: 'Sales tools',
-      summary: 'Tools that help sales teams plan and schedule messages to customers.',
-      highlights: [
-        'Scheduled campaign flows.',
-        'Personalised message content for each customer.',
-        'Campaign details and quick lookups.',
-      ],
-      impact: [],
-      stack: [],
-      features: [
-        { type: 'Workflows', count: null },
-        { type: 'Screens', count: null },
-        { type: 'Personalisation', count: null },
-      ],
-    },
-    {
-      id: 'property',
-      code: 'M-05',
-      title: 'Property & listings',
-      kind: 'Customer-facing web',
-      summary: 'Web pages where people browse property listings, look at investment info and complete seller tasks.',
-      highlights: [
-        'New investment and listing pages.',
-        'Better mobile panels and action buttons.',
-        'A preview step for the seller form.',
-      ],
-      impact: [],
-      stack: [],
-      features: [
-        { type: 'Screens', count: null },
-        { type: 'Search & filters', count: null },
-        { type: 'Mobile layout', count: null },
-      ],
-    },
-    {
-      id: 'finance',
-      code: 'M-06',
-      title: 'Payments & finance',
-      kind: 'Internal workflows',
-      summary: 'Flows used by finance teams to review and approve payments.',
-      highlights: [
-        'Added a finance approval step.',
-        'Updated who can pay and when.',
-        'Clearer payment confirmation messages.',
-      ],
-      impact: [],
-      stack: [],
-      features: [
-        { type: 'Workflows', count: null },
-        { type: 'Permissions', count: null },
-        { type: 'Screens', count: null },
+        'The web app where people browse property listings, explore investment options and complete seller tasks. I build the front end.',
+      stack: ['React', 'Redux Toolkit', 'JavaScript', 'SCSS'],
+      modules: [
+        {
+          name: 'Investment & listing pages',
+          points: ['New pages for investments and listings.', 'Search and filters to find the right property.'],
+        },
+        {
+          name: 'Mobile experience',
+          points: ['Better mobile panels and action buttons.', 'Layouts that work across all screen sizes.'],
+        },
+        {
+          name: 'Seller tools',
+          points: ['A preview step for the seller form, so sellers can check before they submit.'],
+        },
+        {
+          name: 'Payments',
+          points: ['Payment screens and confirmation content.'],
+        },
       ],
     },
   ] satisfies Mission[],
