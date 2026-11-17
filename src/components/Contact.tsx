@@ -9,7 +9,7 @@ export default function Contact() {
     e.preventDefault()
     const f = new FormData(e.currentTarget)
     const subject = encodeURIComponent(String(f.get('subject') || 'Hello from your portfolio'))
-    const body = encodeURIComponent(`${f.get('message')}\n\n— ${f.get('name')}`)
+    const body = encodeURIComponent(`${f.get('message')}\n\nFrom ${f.get('name')}`)
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
     setSent(true)
   }
@@ -24,7 +24,7 @@ export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-4 pt-24 pb-36 md:pt-32 md:pb-24">
       <SectionHead index="05" kicker="Multiplayer" title="Let’s build something together">
-        Open to interesting product and platform work. The fastest way to reach me is below.
+        Have an idea or a role in mind? Reach out below.
       </SectionHead>
 
       <div className={'grid gap-4 ' + (profile.email ? 'lg:grid-cols-[1fr_1.2fr]' : '')}>
@@ -66,7 +66,7 @@ export default function Contact() {
       <footer className="mt-20 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 font-mono text-xs text-muted">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="hidden md:inline">
-          Press <span className="kbd">1</span>–<span className="kbd">5</span> to jump · <span className="kbd">T</span> theme
+          Press <span className="kbd">1</span> to <span className="kbd">5</span> to jump · <span className="kbd">T</span> theme
         </span>
       </footer>
     </section>

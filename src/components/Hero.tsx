@@ -5,7 +5,7 @@ import { Icon, Val } from './ui'
 
 const CoreScene = lazy(() => import('./CoreScene'))
 
-const ROLES = ['multi-tenant CRMs.', 'one-screen workflows.', 'internal platforms.', 'games & XR, for fun.']
+const ROLES = ['products people use daily.', 'multi-tenant platforms.', 'fast, focused UIs.', 'games & XR, for fun.']
 
 export default function Hero({ theme }: { theme: string }) {
   const typed = useTypewriter(ROLES)

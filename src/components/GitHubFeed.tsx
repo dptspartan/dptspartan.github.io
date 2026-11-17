@@ -14,9 +14,19 @@ type Repo = {
   fork: boolean
 }
 
-const CACHE = 'gh-repos-v1'
-// Hide repos that aren't interesting to visitors (this site itself, etc.).
-const HIDE = new Set([`${profile.handle}.github.io`])
+const CACHE = 'gh-repos-v2'
+// Only show the bigger projects. Live data (language, last update) comes from the GitHub API.
+const SHOW = new Set([
+  'dlc-gaming-app',
+  'us-exe-mobile',
+  'us-exe-web',
+  'us-exe-backend',
+  'smart-note-org',
+  'AI-Nexus',
+  'DriveInOffice',
+  'HiveMind-Root',
+  'Softec_ML_25',
+])
 
 function ago(iso: string) {
   const d = (Date.now() - new Date(iso).getTime()) / 86400000
@@ -46,8 +56,8 @@ export default function GitHubFeed() {
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then((all: Repo[]) => {
         const list = all
-          .filter((r) => !r.fork && !HIDE.has(r.name))
-          .sort((a, b) => b.stargazers_count - a.stargazers_count || +new Date(b.pushed_at) - +new Date(a.pushed_at))
+          .filter((r) => SHOW.has(r.name))
+          .sort((a, b) => +new Date(b.pushed_at) - +new Date(a.pushed_at))
           .slice(0, 6)
         setRepos(list)
         try {
@@ -71,7 +81,7 @@ export default function GitHubFeed() {
           <div className="label flex items-center gap-2">
             <span className="live-dot h-1.5 w-1.5 rounded-full bg-accent" /> Live feed · github.com/{profile.handle}
           </div>
-          <h3 className="mt-1 text-2xl font-semibold">Public repositories</h3>
+          <h3 className="mt-1 text-2xl font-semibold">Recently active repos</h3>
         </div>
         <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm text-accent">
           All repos <Icon name="external" className="h-3.5 w-3.5" />
