@@ -95,17 +95,12 @@ export const dubizzle = {
           ],
         },
         {
-          name: 'Elasticsearch',
-          tag: 'Major features',
-          points: [
-            'Lead and customer search powered by Elasticsearch.',
-            'Reworked how records are indexed so search results stay accurate.',
-          ],
-        },
-        {
           name: 'Reports module',
           tag: 'Major features',
-          points: ['Report views for sales teams and managers.', 'Filters to slice the data the way each team needs.'],
+          points: [
+            'Report views for sales teams and managers, powered by Elasticsearch.',
+            'Filters to slice the data the way each team needs.',
+          ],
         },
         {
           name: 'Roles & access',
@@ -355,7 +350,7 @@ export const projects: Project[] = [
 
 export const skills: { group: string; level: number; items: string[] }[] = [
   { group: 'Frontend', level: 90, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
-  { group: 'Backend & data', level: 88, items: ['Django REST', 'Ruby on Rails', 'PostgreSQL', 'Elasticsearch', 'Supabase', 'Celery'] },
+  { group: 'Backend & data', level: 88, items: ['Django REST', 'Ruby on Rails', 'PostgreSQL', 'Supabase', 'Celery', 'Redis'] },
   { group: 'DevOps & cloud', level: 78, items: ['Docker', 'GitHub Actions', 'Heroku', 'AWS S3', 'Vercel', 'Linux'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
   { group: 'Client work', level: 85, items: ['Requirements', 'Planning', 'Team lead', 'Delivery'] },

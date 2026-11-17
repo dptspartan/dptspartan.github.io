@@ -9,6 +9,12 @@
     <meta property="og:description" content="Full stack developer at Dubizzle Labs. Django, React, DevOps, AI." />
     <meta property="og:image" content="/assets/img/shoaib.jpg" />
     <meta name="theme-color" content="#07090f" />
+    <link rel="alternate" hreflang="en" href="https://dptspartan.github.io/" />
+    <link rel="alternate" hreflang="de" href="https://dptspartan.github.io/de/" />
+    <link rel="alternate" hreflang="tr" href="https://dptspartan.github.io/tr/" />
+    <link rel="alternate" hreflang="ar" href="https://dptspartan.github.io/ar/" />
+    <link rel="alternate" hreflang="ur" href="https://dptspartan.github.io/ur/" />
+    <link rel="alternate" hreflang="x-default" href="https://dptspartan.github.io/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,9 +29,8 @@
         }
         document.documentElement.dataset.theme = t
         // Language and text direction before first paint, to avoid a layout flip.
-        var l = new URLSearchParams(location.search).get('lang')
-        try { l = l || sessionStorage.getItem('lang') } catch (e) {}
-        l = l || (navigator.language || 'en').slice(0, 2)
+        // The language comes from the URL: /de/, /tr/, /ar/, /ur/ (English at /).
+        var l = location.pathname.split('/')[1] || new URLSearchParams(location.search).get('lang')
         if (['en', 'de', 'tr', 'ar', 'ur'].indexOf(l) < 0) l = 'en'
         document.documentElement.lang = l
         document.documentElement.dir = l === 'ar' || l === 'ur' ? 'rtl' : 'ltr'
