@@ -16,14 +16,14 @@ export const profile = {
   company: 'Dubizzle Labs',
   location: 'Lahore, Pakistan',
   tagline:
-    'Full stack developer who takes products from idea to live. Ruby on Rails and React at work, plus my own DevOps, and years of working straight with clients. I ship fast, clean and reliable.',
-  strengths: ['Full stack', 'Ruby on Rails + React', 'DevOps', 'Client-facing'],
+    'Full stack developer who takes products from idea to live. Django and React for most of my own work, plus DevOps, game dev and AI features, and years of working straight with clients. I ship fast, clean and reliable.',
+  strengths: ['Backend', 'Frontend', 'DevOps', 'Game Dev', 'ML / AI integration'],
   github: 'https://github.com/dptspartan',
   linkedin: 'https://www.linkedin.com/in/shoaib-rashid-5932a51b3',
   email: 'shoaib.lahore90@gmail.com',
   resume: '/resume.pdf',
   avatar: '/assets/img/shoaib.jpg',
-  status: 'Full stack at Dubizzle Labs',
+  status: 'Currently deployed at Dubizzle Labs',
 }
 
 /** HUD stats in the hero. Use a string value of PLACEHOLDER until you have the real number. */
@@ -355,7 +355,7 @@ export const projects: Project[] = [
 
 export const skills: { group: string; level: number; items: string[] }[] = [
   { group: 'Frontend', level: 90, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
-  { group: 'Backend & data', level: 88, items: ['Ruby on Rails', 'Django REST', 'PostgreSQL', 'Elasticsearch', 'Supabase', 'Celery'] },
+  { group: 'Backend & data', level: 88, items: ['Django REST', 'Ruby on Rails', 'PostgreSQL', 'Elasticsearch', 'Supabase', 'Celery'] },
   { group: 'DevOps & cloud', level: 78, items: ['Docker', 'GitHub Actions', 'Heroku', 'AWS S3', 'Vercel', 'Linux'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
   { group: 'Client work', level: 85, items: ['Requirements', 'Planning', 'Team lead', 'Delivery'] },

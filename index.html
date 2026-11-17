@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shoaib Rashid · Software Engineer</title>
-    <meta name="description" content="Shoaib Rashid, full stack developer at Dubizzle Labs. Ruby on Rails, React, DevOps and client work." />
+    <meta name="description" content="Shoaib Rashid, full stack developer at Dubizzle Labs. Django, React, DevOps, game dev and AI." />
     <meta property="og:title" content="Shoaib Rashid · Software Engineer" />
-    <meta property="og:description" content="Full stack developer at Dubizzle Labs. Ruby on Rails, React, DevOps." />
+    <meta property="og:description" content="Full stack developer at Dubizzle Labs. Django, React, DevOps, AI." />
     <meta property="og:image" content="/assets/img/shoaib.jpg" />
     <meta name="theme-color" content="#07090f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script>
       // Apply the saved theme before first paint (theme is kept for the browser session).
       (function () {
@@ -22,6 +22,13 @@
           t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
         }
         document.documentElement.dataset.theme = t
+        // Language and text direction before first paint, to avoid a layout flip.
+        var l = new URLSearchParams(location.search).get('lang')
+        try { l = l || sessionStorage.getItem('lang') } catch (e) {}
+        l = l || (navigator.language || 'en').slice(0, 2)
+        if (['en', 'de', 'tr', 'ar', 'ur'].indexOf(l) < 0) l = 'en'
+        document.documentElement.lang = l
+        document.documentElement.dir = l === 'ar' || l === 'ur' ? 'rtl' : 'ltr'
       })()
     </script>
   </head>

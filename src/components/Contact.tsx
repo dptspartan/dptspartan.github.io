@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from 'react'
-import { profile } from '../data/profile'
+import { useContent, useT } from '../i18n'
 import { Icon, SectionHead } from './ui'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const t = useT()
+  const { profile } = useContent()
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -16,15 +18,15 @@ export default function Contact() {
 
   const links = [
     { href: profile.github, label: 'GitHub', icon: 'github' as const, sub: `@${profile.handle}` },
-    profile.linkedin && { href: profile.linkedin, label: 'LinkedIn', icon: 'linkedin' as const, sub: 'Connect' },
-    profile.email && { href: `mailto:${profile.email}`, label: 'Email', icon: 'mail' as const, sub: profile.email },
-    { href: profile.resume, label: 'Résumé', icon: 'file' as const, sub: 'PDF' },
+    profile.linkedin && { href: profile.linkedin, label: 'LinkedIn', icon: 'linkedin' as const, sub: t('Connect') },
+    profile.email && { href: `mailto:${profile.email}`, label: t('Email'), icon: 'mail' as const, sub: profile.email },
+    { href: profile.resume, label: t('Résumé'), icon: 'file' as const, sub: 'PDF' },
   ].filter(Boolean) as { href: string; label: string; icon: 'github' | 'linkedin' | 'mail' | 'file'; sub: string }[]
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-4 pt-24 pb-36 md:pt-32 md:pb-24">
-      <SectionHead index="05" kicker="Multiplayer" title="Let’s build something together">
-        Have an idea or a role in mind? Reach out below.
+      <SectionHead index="05" kicker={t('Multiplayer')} title={t('Let’s build something together')} fx="wipe">
+        {t('Have an idea or a role in mind? Reach out below.')}
       </SectionHead>
 
       <div className={'grid gap-4 ' + (profile.email ? 'lg:grid-cols-[1fr_1.2fr]' : '')}>
@@ -44,21 +46,21 @@ export default function Contact() {
                 <span className="block font-medium">{l.label}</span>
                 <span className="block truncate font-mono text-xs text-muted">{l.sub}</span>
               </span>
-              <Icon name="arrow" className="ml-auto h-4 w-4 text-muted transition group-hover:translate-x-1 group-hover:text-accent" />
+              <Icon name="arrow" className="ms-auto h-4 w-4 text-muted transition group-hover:translate-x-1 group-hover:text-accent rtl:rotate-180 rtl:group-hover:-translate-x-1" />
             </a>
           ))}
         </div>
 
         {profile.email && (
           <form onSubmit={submit} className="panel hud reveal grid gap-3 p-6">
-            <div className="label">Send a message</div>
+            <div className="label">{t('Send a message')}</div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <input required name="name" placeholder="Your name" className="rounded-lg border border-line bg-bg-2/60 px-3 py-2.5 text-sm outline-none focus:border-accent" />
-              <input name="subject" placeholder="Subject" className="rounded-lg border border-line bg-bg-2/60 px-3 py-2.5 text-sm outline-none focus:border-accent" />
+              <input required name="name" placeholder={t('Your name')} className="rounded-lg border border-line bg-bg-2/60 px-3 py-2.5 text-sm outline-none focus:border-accent" />
+              <input name="subject" placeholder={t('Subject')} className="rounded-lg border border-line bg-bg-2/60 px-3 py-2.5 text-sm outline-none focus:border-accent" />
             </div>
-            <textarea required name="message" rows={5} placeholder="What are we building?" className="rounded-lg border border-line bg-bg-2/60 px-3 py-2.5 text-sm outline-none focus:border-accent" />
-            <button className="justify-self-start rounded-lg bg-accent px-5 py-2.5 font-semibold text-accent-ink">Send</button>
-            {sent && <p className="text-xs text-muted">Your email app should have opened with the message ready to send.</p>}
+            <textarea required name="message" rows={5} placeholder={t('What are we building?')} className="rounded-lg border border-line bg-bg-2/60 px-3 py-2.5 text-sm outline-none focus:border-accent" />
+            <button className="justify-self-start rounded-lg bg-accent px-5 py-2.5 font-semibold text-accent-ink">{t('Send')}</button>
+            {sent && <p className="text-xs text-muted">{t('Your email app should have opened with the message ready to send.')}</p>}
           </form>
         )}
       </div>
@@ -66,7 +68,7 @@ export default function Contact() {
       <footer className="mt-20 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 font-mono text-xs text-muted">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="hidden md:inline">
-          Press <span className="kbd">1</span> to <span className="kbd">5</span> to jump · <span className="kbd">T</span> theme
+          {t('Press')} <span className="kbd">1</span>-<span className="kbd">5</span> {t('to jump')} · <span className="kbd">T</span> {t('theme')}
         </span>
       </footer>
     </section>

@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import Contact from './components/Contact'
+import Curtain, { deploy } from './components/Curtain'
+import Divider from './components/Divider'
 import Hero from './components/Hero'
 import Loadout from './components/Loadout'
 import Nav, { SECTIONS } from './components/Nav'
@@ -20,7 +22,7 @@ export default function App() {
       const t = e.target as HTMLElement
       if (e.metaKey || e.ctrlKey || e.altKey || /INPUT|TEXTAREA|SELECT/.test(t.tagName) || t.isContentEditable) return
       const n = Number(e.key)
-      if (n >= 1 && n <= IDS.length) document.getElementById(IDS[n - 1])?.scrollIntoView()
+      if (n >= 1 && n <= IDS.length) deploy(IDS[n - 1])
       else if (e.key.toLowerCase() === 't') toggle()
     }
     window.addEventListener('keydown', onKey)
@@ -33,11 +35,16 @@ export default function App() {
       <Nav active={active} theme={theme} onToggle={toggle} />
       <main>
         <Hero theme={theme} />
+        <Divider n="02" label="Main quest" />
         <Work />
+        <Divider n="03" label="Side quests" />
         <Projects />
+        <Divider n="04" label="Loadout" />
         <Loadout />
+        <Divider n="05" label="Multiplayer" />
         <Contact />
       </main>
+      <Curtain />
     </>
   )
 }

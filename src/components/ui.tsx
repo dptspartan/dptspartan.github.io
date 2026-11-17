@@ -14,15 +14,29 @@ export function Val({ v, soon = 'details soon' }: { v: string; soon?: string }) 
   )
 }
 
-export function SectionHead({ index, kicker, title, children }: { index: string; kicker: string; title: string; children?: ReactNode }) {
+export function SectionHead({
+  index,
+  kicker,
+  title,
+  children,
+  fx = 'rise',
+}: {
+  index: string
+  kicker: string
+  title: string
+  children?: ReactNode
+  fx?: 'rise' | 'wipe' | 'scan' | 'glitch'
+}) {
   return (
-    <div className="reveal mb-10 flex flex-col gap-3 md:mb-14">
+    <div className="reveal relative mb-10 flex flex-col gap-3 md:mb-14" data-fx={fx}>
       <div className="label flex items-center gap-3">
         <span className="text-accent">{index}</span>
         <span className="h-px w-10 bg-line-strong" />
         {kicker}
       </div>
-      <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">{title}</h2>
+      <h2 className="text-3xl font-semibold tracking-tight md:text-5xl" data-text={title}>
+        {title}
+      </h2>
       {children && <p className="max-w-2xl text-base leading-relaxed text-muted md:text-lg">{children}</p>}
     </div>
   )
@@ -41,9 +55,15 @@ export function Chip({ children, tone = 'default' }: { children: ReactNode; tone
   )
 }
 
-type IconName = 'github' | 'linkedin' | 'mail' | 'sun' | 'moon' | 'arrow' | 'file' | 'star' | 'fork' | 'play' | 'external'
+type IconName = 'globe' | 'github' | 'linkedin' | 'mail' | 'sun' | 'moon' | 'arrow' | 'file' | 'star' | 'fork' | 'play' | 'external'
 
 const paths: Record<IconName, ReactNode> = {
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </>
+  ),
   github: (
     <path
       fill="currentColor"
