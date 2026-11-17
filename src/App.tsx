@@ -14,7 +14,7 @@ export default function App() {
   const active = useActiveSection(IDS)
   useReveal()
 
-  // Game-style shortcuts: 1–5 jump to a section, T toggles the theme.
+  // Game-style shortcuts: 1 to 5 jump to a section, T toggles the theme.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement

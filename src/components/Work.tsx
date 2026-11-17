@@ -10,7 +10,7 @@ function FeatureLog({ features }: { features: Mission['features'] }) {
   return (
     <div className="mt-8 border-t border-line pt-6">
       <div className="mb-4 flex items-baseline justify-between">
-        <div className="label">Quest log · features shipped by type</div>
+        <div className="label">Quest log · features shipped</div>
         <div className="font-mono text-sm">
           {total > 0 ? <span className="text-accent">{total} total</span> : <Val v="TODO" soon="counts soon" />}
         </div>
@@ -20,7 +20,7 @@ function FeatureLog({ features }: { features: Mission['features'] }) {
           <div key={i} className="rounded-lg border border-line bg-bg-2/60 p-3">
             <div className="flex items-baseline justify-between gap-2">
               <span className="text-sm font-medium">{isTodo(f.type) ? <Val v={f.type} soon="feature type" /> : f.type}</span>
-              <span className="font-mono text-lg font-semibold text-accent">{f.count ?? '–'}</span>
+              <span className="font-mono text-lg font-semibold text-accent">{f.count ?? '-'}</span>
             </div>
             <div className="mt-2 h-1 overflow-hidden rounded-full bg-line">
               <div className="h-full rounded-full bg-accent" style={{ width: `${((f.count ?? 0) / max) * 100}%` }} />
@@ -81,7 +81,7 @@ export default function Work() {
           <div className="flex flex-wrap items-center gap-2">
             <Chip tone="accent">{m.code}</Chip>
             <Chip>{m.kind}</Chip>
-            <Chip>Overview only · proprietary</Chip>
+            <Chip>Overview only, no code</Chip>
           </div>
           <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{m.title}</h3>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted md:text-lg">{m.summary}</p>

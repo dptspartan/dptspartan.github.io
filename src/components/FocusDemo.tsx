@@ -44,14 +44,14 @@ export default function FocusDemo() {
     <div className="reveal mt-16">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <div className="label">Playable concept · M-03</div>
-          <h3 className="mt-1 text-2xl font-semibold">Focus Mode, in miniature</h3>
+          <div className="label">Playable demo · M-03</div>
+          <h3 className="mt-1 text-2xl font-semibold">Focus Mode, in mini</h3>
           <p className="mt-2 max-w-2xl text-sm text-muted">
-            The idea: never leave the screen. Pick a lead, move it through the pipeline and run every action in place. Try it.
+            The idea is simple: do everything from one screen. Pick a lead, move it along, and take actions without leaving the page. Try it.
           </p>
         </div>
         <span className="rounded-md border border-dashed border-line-strong px-2 py-1 font-mono text-[11px] text-muted">
-          Illustrative mock · sample data · not the production UI
+          Demo with fake data. Not the real product.
         </span>
       </div>
 

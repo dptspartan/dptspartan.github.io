@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { projects, type Project } from '../data/profile'
+import { builds, projects, type Build, type Project } from '../data/profile'
 import GitHubFeed from './GitHubFeed'
 import { Chip, Icon, SectionHead } from './ui'
 
@@ -11,13 +11,7 @@ const matches = (p: Project, f: Filter) =>
 
 function Media({ p }: { p: Project }) {
   const [playing, setPlaying] = useState(false)
-  if (!p.media) {
-    return (
-      <div className="bg-grid relative grid aspect-video place-items-center border-b border-line">
-        <span className="font-mono text-3xl font-bold text-line-strong">{p.title.slice(0, 2).toUpperCase()}</span>
-      </div>
-    )
-  }
+  if (!p.media) return null
   if (p.media.type === 'image') {
     return <img src={p.media.src} alt={p.title} loading="lazy" className="aspect-video w-full border-b border-line object-cover" />
   }
@@ -39,17 +33,67 @@ function Media({ p }: { p: Project }) {
   )
 }
 
+function BuildCard({ b, i }: { b: Build; i: number }) {
+  return (
+    <article className={'panel reveal flex flex-col p-6 md:p-7 ' + (i === 0 ? 'hud lg:col-span-2' : '')}>
+      <div className="flex items-center justify-between gap-3">
+        <span className="font-mono text-xs text-accent">B-0{i + 1}</span>
+        <span className="font-mono text-xs text-muted">{b.year}</span>
+      </div>
+      <h3 className="mt-3 text-2xl font-semibold">{b.title}</h3>
+      <div className="mt-1 text-sm text-accent-2">{b.kind}</div>
+      <p className="mt-4 leading-relaxed text-muted">{b.about}</p>
+      <ul className="mt-5 space-y-2">
+        {b.points.map((pt) => (
+          <li key={pt} className="flex gap-3 text-sm leading-relaxed">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-accent" />
+            {pt}
+          </li>
+        ))}
+      </ul>
+      <div className="mt-5 flex flex-wrap gap-1.5">
+        {b.stack.map((s) => (
+          <Chip key={s}>{s}</Chip>
+        ))}
+      </div>
+      <div className="mt-auto flex flex-wrap gap-4 pt-6 text-sm">
+        {b.live && (
+          <a href={b.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 font-medium text-accent">
+            Try it live <Icon name="external" className="h-3.5 w-3.5" />
+          </a>
+        )}
+        {b.repo && (
+          <a href={b.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-muted hover:text-text">
+            <Icon name="github" className="h-3.5 w-3.5" /> Code
+          </a>
+        )}
+      </div>
+    </article>
+  )
+}
+
 export default function Projects() {
   const [filter, setFilter] = useState<Filter>('All')
   const list = useMemo(() => projects.filter((p) => matches(p, filter)), [filter])
 
   return (
     <section id="projects" className="mx-auto max-w-6xl px-4 py-24 md:py-32">
-      <SectionHead index="03" kicker="Side quests" title="Things I built for the love of it">
-        Before CRMs, I was building VR worlds, games and computer vision experiments. Some of them are below.
+      <SectionHead index="03" kicker="Side quests" title="Things I build outside work">
+        Bigger apps I built in my own time. Live tournaments, mobile apps, AI and more.
       </SectionHead>
 
-      <div className="reveal mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+      <div className="grid gap-4 lg:grid-cols-2">
+        {builds.map((b, i) => (
+          <BuildCard key={b.title} b={b} i={i} />
+        ))}
+      </div>
+
+      <div className="reveal mt-20 mb-6">
+        <div className="label">Earlier work</div>
+        <h3 className="mt-1 text-2xl font-semibold">VR, games and ML from university</h3>
+      </div>
+
+      <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
         {FILTERS.map((f) => (
           <button
             key={f}
