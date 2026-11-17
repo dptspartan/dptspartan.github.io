@@ -59,7 +59,7 @@ export const dubizzle = {
     { label: 'Commits', value: '670+' },
     { label: 'Since', value: 'Mar 2026' },
   ],
-  stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'JavaScript', 'Micro frontends', 'i18n', 'Feature flags'],
+  stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'REST APIs', 'Multi-tenancy', 'i18n', 'Feature flags'],
   missions: [
     {
       id: 'group-crm',
@@ -70,7 +70,7 @@ export const dubizzle = {
         'A CRM first built for one company, then shared with other brands in the group like OLX and Bayut. Sales teams use it to manage customers, deals, contracts and payments.',
       highlights: [
         'Updated contract and payment flows.',
-        'Made lead and customer search better and more reliable.',
+        'Made lead and customer search faster and more reliable by reworking how records are indexed.',
         'Added report views and filters.',
       ],
       impact: [],
@@ -395,8 +395,8 @@ export const projects: Project[] = [
 ]
 
 export const skills: { group: string; level: number; items: string[] }[] = [
-  { group: 'Frontend', level: 92, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
-  { group: 'Backend & data', level: 86, items: ['Ruby on Rails', 'Django REST', 'PostgreSQL', 'Supabase', 'Celery'] },
+  { group: 'Frontend', level: 90, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
+  { group: 'Backend & data', level: 88, items: ['Ruby on Rails', 'Django REST', 'PostgreSQL', 'Supabase', 'Celery'] },
   { group: 'DevOps & cloud', level: 78, items: ['Docker', 'GitHub Actions', 'Heroku', 'AWS S3', 'Vercel', 'Linux'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
   { group: 'Client work', level: 85, items: ['Requirements', 'Planning', 'Team lead', 'Delivery'] },
