@@ -66,7 +66,7 @@ export const dubizzle = {
       kind: 'Full stack · multi-tenant CRM',
       summary:
         'The shared CRM behind all Zameen projects, later rolled out to other group brands like OLX and Bayut. Every project runs as its own tenant with its own data, users and settings, all on one platform. I work on it end to end, from Rails APIs to React screens.',
-      stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'REST APIs', 'Multi-tenancy'],
+      stack: ['Ruby on Rails', 'React', 'Redux Toolkit', 'Elasticsearch', 'REST APIs', 'Multi-tenancy'],
       modules: [
         {
           name: 'Focus Mode',
@@ -95,12 +95,18 @@ export const dubizzle = {
           ],
         },
         {
-          name: 'Search, reports & access',
+          name: 'Elasticsearch',
+          tag: 'Major features',
           points: [
-            'Improved lead and customer search by reworking how records are indexed.',
-            'Report views and filters.',
-            'Roles and permissions across tenants.',
+            'Lead and customer search powered by Elasticsearch.',
+            'Reworked how records are indexed so search results stay accurate.',
+            'Search that respects each tenant and user role.',
           ],
+        },
+        {
+          name: 'Reports module',
+          tag: 'Major features',
+          points: ['Report views for sales teams and managers.', 'Filters to slice the data the way each team needs.'],
         },
       ],
     },
@@ -346,7 +352,7 @@ export const projects: Project[] = [
 
 export const skills: { group: string; level: number; items: string[] }[] = [
   { group: 'Frontend', level: 90, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
-  { group: 'Backend & data', level: 88, items: ['Ruby on Rails', 'Django REST', 'PostgreSQL', 'Supabase', 'Celery'] },
+  { group: 'Backend & data', level: 88, items: ['Ruby on Rails', 'Django REST', 'PostgreSQL', 'Elasticsearch', 'Supabase', 'Celery'] },
   { group: 'DevOps & cloud', level: 78, items: ['Docker', 'GitHub Actions', 'Heroku', 'AWS S3', 'Vercel', 'Linux'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
   { group: 'Client work', level: 85, items: ['Requirements', 'Planning', 'Team lead', 'Delivery'] },
