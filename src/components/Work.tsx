@@ -1,33 +1,12 @@
 import { useState } from 'react'
-import { dubizzle, type Mission } from '../data/profile'
+import { dubizzle } from '../data/profile'
 import FocusDemo from './FocusDemo'
 import Freelance from './Freelance'
-import { Chip, SectionHead, Val, isTodo } from './ui'
-
-function FeatureLog({ features }: { features: Mission['features'] }) {
-  const list = features.filter((f) => !isTodo(f.type))
-  if (!list.length) return null
-  return (
-    <div>
-      <div className="label mb-3">Types of features I built</div>
-      <div className="flex flex-wrap gap-2">
-        {list.map((f) => (
-          <span key={f.type} className="inline-flex items-center gap-2 rounded-lg border border-line bg-bg-2/60 px-3 py-1.5 text-sm">
-            <span className="h-1.5 w-1.5 rotate-45 bg-accent" />
-            {f.type}
-            {f.count != null && <span className="font-mono text-accent">{f.count}</span>}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { Chip, SectionHead } from './ui'
 
 export default function Work() {
   const [sel, setSel] = useState(0)
   const m = dubizzle.missions[sel]
-  const realHighlights = m.highlights.filter((h) => !isTodo(h))
-  const moreSoon = m.highlights.length !== realHighlights.length
 
   return (
     <section id="work" className="relative mx-auto max-w-6xl px-4 py-24 md:py-32">
@@ -68,14 +47,6 @@ export default function Work() {
               <div className="mt-0.5 text-xs text-muted">{mi.kind}</div>
             </button>
           ))}
-          <div className="panel hidden p-4 lg:block">
-            <div className="label mb-2">Main stack</div>
-            <div className="flex flex-wrap gap-1.5">
-              {dubizzle.stack.map((x) => (
-                <Chip key={x}>{x}</Chip>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Mission detail */}
@@ -83,44 +54,34 @@ export default function Work() {
           <div className="flex flex-wrap items-center gap-2">
             <Chip tone="accent">{m.code}</Chip>
             <Chip>{m.kind}</Chip>
-            <Chip>Overview only, no code</Chip>
           </div>
           <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{m.title}</h3>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted md:text-lg">{m.summary}</p>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div>
-              <div className="label mb-3">Objectives cleared</div>
-              <ul className="space-y-2.5">
-                {realHighlights.map((h) => (
-                  <li key={h} className="flex gap-3 text-sm leading-relaxed">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-accent" />
-                    {h}
-                  </li>
-                ))}
-                {moreSoon && (
-                  <li className="flex gap-3 text-sm">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 border border-line-strong" />
-                    <Val v="TODO" soon="more objectives soon" />
-                  </li>
-                )}
-              </ul>
-            </div>
-            <div className="space-y-6">
-              <FeatureLog features={m.features} />
-              {m.impact.length > 0 && (
-                <div>
-                  <div className="label mb-3">Impact</div>
-                  <div className="flex flex-wrap gap-2">
-                    {m.impact.map((x) => (
-                      <Chip key={x} tone="accent">
-                        {x}
-                      </Chip>
-                    ))}
-                  </div>
+          <div className="mt-5 flex flex-wrap gap-1.5">
+            {m.stack.map((x) => (
+              <Chip key={x}>{x}</Chip>
+            ))}
+          </div>
+
+          <div className="label mt-8 mb-3">What I built</div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {m.modules.map((mod) => (
+              <div key={mod.name} className="rounded-xl border border-line bg-bg-2/60 p-4">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="font-semibold">{mod.name}</span>
+                  {mod.tag && <Chip tone="accent">{mod.tag}</Chip>}
                 </div>
-              )}
-            </div>
+                <ul className="mt-3 space-y-2">
+                  {mod.points.map((pt) => (
+                    <li key={pt} className="flex gap-3 text-sm leading-relaxed text-muted">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-accent" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </article>
       </div>

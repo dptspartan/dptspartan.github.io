@@ -44,14 +44,14 @@ export default function FocusDemo() {
     <div className="reveal mt-16">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <div className="label">Playable demo · M-03</div>
+          <div className="label">Playable demo · Jarvis · Focus Mode</div>
           <h3 className="mt-1 text-2xl font-semibold">Focus Mode, in mini</h3>
           <p className="mt-2 max-w-2xl text-sm text-muted">
             The idea is simple: do everything from one screen. Pick a lead, move it along, and take actions without leaving the page. Try it.
           </p>
         </div>
         <span className="rounded-md border border-dashed border-line-strong px-2 py-1 font-mono text-[11px] text-muted">
-          Demo with fake data. Not the real product.
+          Concept demo · sample data
         </span>
       </div>
 
