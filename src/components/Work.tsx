@@ -83,7 +83,6 @@ export default function Work() {
           <div className="flex flex-wrap items-center gap-2">
             <Chip tone="accent">{m.code}</Chip>
             <Chip>{m.kind}</Chip>
-            <Chip>Overview only, no code</Chip>
           </div>
           <h3 className="mt-4 text-2xl font-semibold md:text-3xl">{m.title}</h3>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted md:text-lg">{m.summary}</p>

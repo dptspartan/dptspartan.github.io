@@ -51,7 +51,7 @@ export default function FocusDemo() {
           </p>
         </div>
         <span className="rounded-md border border-dashed border-line-strong px-2 py-1 font-mono text-[11px] text-muted">
-          Demo with fake data. Not the real product.
+          Concept demo · sample data
         </span>
       </div>
 

@@ -52,7 +52,7 @@ export const dubizzle = {
   company: 'Dubizzle Labs',
   period: 'Mar 2026 to now',
   intro:
-    'I work full stack on very large codebases used by hundreds of thousands of people at once, with Ruby on Rails on the back end and React on the front. My main work is multi-tenant CRMs, plus LMS platforms, merchant portals and customer-facing pages. This work is private, so below are simple overviews. No code.',
+    'I work full stack on large scale legacy codebases, with Ruby on Rails on the back end and React on the front. My main work is multi-tenant CRMs, plus LMS platforms, merchant portals and customer-facing pages.',
   totals: [
     { label: 'PRs merged', value: '251' },
     { label: 'PRs opened', value: '290' },
