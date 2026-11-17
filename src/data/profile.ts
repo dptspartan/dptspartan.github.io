@@ -12,18 +12,14 @@ export const PLACEHOLDER = 'TODO'
 export const profile = {
   name: 'Shoaib Rashid',
   handle: 'dptspartan',
-  // TODO: confirm exact title at Dubizzle Labs (e.g. "Software Engineer", "Full-Stack Engineer").
-  role: 'Software Engineer',
+  role: 'Associate Software Engineer',
   company: 'Dubizzle Labs',
   location: 'Lahore, Pakistan',
   tagline:
     'I build apps people use every day. I like taking something complicated and making it feel simple.',
   github: 'https://github.com/dptspartan',
-  // TODO: add your LinkedIn URL, or leave empty to hide the button.
-  linkedin: '',
-  // TODO: add a public contact email, or leave empty to hide the email button and form.
-  email: '',
-  // TODO: replace public/resume.pdf with your current résumé (the existing one is from 2023).
+  linkedin: 'https://www.linkedin.com/in/shoaib-rashid-5932a51b3',
+  email: 'shoaib.lahore90@gmail.com',
   resume: '/resume.pdf',
   avatar: '/assets/img/shoaib.jpg',
   status: 'Shipping at Dubizzle Labs',
@@ -55,14 +51,14 @@ export const dubizzle = {
   company: 'Dubizzle Labs',
   period: 'Mar 2026 to now',
   intro:
-    'At Dubizzle Labs I work across the CRM and property products used by big brands like OLX, Bayut and Zameen. This work is private, so below are simple overviews of what I built. No code.',
+    'I build front end apps on very large codebases used by hundreds of thousands of people at once. My main work is on multi-tenant CRMs for brands like OLX, Bayut and Zameen, plus LMS platforms, merchant portals and customer-facing pages. This work is private, so below are simple overviews. No code.',
   totals: [
     { label: 'PRs merged', value: '251' },
     { label: 'PRs opened', value: '290' },
     { label: 'Commits', value: '670+' },
     { label: 'Since', value: 'Mar 2026' },
   ],
-  stack: ['React', 'JavaScript', 'Ruby', 'SCSS', 'HTML'],
+  stack: ['React', 'Redux Toolkit', 'JavaScript', 'Micro frontends', 'i18n', 'Feature flags', 'SCSS'],
   missions: [
     {
       id: 'group-crm',
@@ -190,39 +186,51 @@ export const dubizzle = {
 export type Gig = {
   client: string
   role: string
-  // TODO: dates for each gig.
-  period: string
   about: string
   points: string[]
   stack: string[]
 }
 
-/** Freelance work. */
+/** Before Dubizzle: my own studio, ClickSotic, plus the CSOLS IT role. */
+export const studio = {
+  name: 'ClickSotic',
+  role: 'Founder and software developer',
+  period: 'Mar 2024 to Mar 2026',
+  about:
+    'I started and ran my own software studio. I handled the tech plans, system design and talking to clients abroad, and led a small team.',
+}
+
 export const freelance: Gig[] = [
   {
     client: 'DripSaint',
-    role: 'Freelance full stack developer',
-    period: PLACEHOLDER,
+    role: 'AI t-shirt store · via ClickSotic',
     about:
       'An AI powered clothing store. Shoppers type a prompt, the site creates an image with Midjourney, shows it on a t-shirt preview, and they can order it right away.',
     points: [
       'Prompt to image to t-shirt preview to order, all in one flow.',
-      'Image generation powered by Midjourney.',
-      'Images stored on AWS S3 through Bucketeer, app hosted on Heroku.',
+      'Background workers (Celery) handle the image requests so the site stays fast.',
+      'Live t-shirt mockups made with OpenCV.',
     ],
-    stack: ['React', 'Redux', 'Django', 'PostgreSQL', 'Midjourney', 'AWS S3', 'Heroku'],
+    stack: ['React', 'Redux', 'Django REST', 'Celery', 'Midjourney', 'OpenCV', 'AWS S3', 'Heroku'],
   },
   {
     client: 'CSOLS',
-    role: 'Freelance full stack developer',
-    period: PLACEHOLDER,
-    about: 'Built and customised their learning management system (LMS) to fit how they teach and manage students.',
+    role: 'Learning platform · Head of IT, Jul 2023 to Mar 2025',
+    about:
+      'Caroline School of Legal Studies. As Head of IT I advised the board, ran their web setup and security, and built their custom learning management system (LMS).',
     points: [
-      'Custom LMS features on top of a Django and React app.',
-      // TODO: 1 or 2 example features (courses, quizzes, progress tracking...).
-      PLACEHOLDER,
+      'LMS for courses, student tracking and grading, with automatic grading.',
+      'Role-based access and secure JWT login.',
+      'Kept the school systems safe: SSL, firewall and automatic database backups.',
     ],
-    stack: ['React', 'Redux', 'Django', 'PostgreSQL', 'AWS S3', 'Heroku'],
+    stack: ['React', 'Django REST', 'PostgreSQL', 'JWT', 'RBAC'],
+  },
+  {
+    client: 'AR Scavenger Hunt',
+    role: 'Mobile AR game · via ClickSotic',
+    about: 'A mobile scavenger hunt in augmented reality, made for university events.',
+    points: ['Tracks the real world so clues sit in real places.', 'Virtual objects hide behind real ones (occlusion).'],
+    stack: ['Unity', 'C#', 'ARCore'],
   },
 ]
 
@@ -387,25 +395,25 @@ export const projects: Project[] = [
 
 export const skills: { group: string; level: number; items: string[] }[] = [
   // TODO: adjust groups, levels (0 to 100) and items to match your current stack.
-  { group: 'Frontend', level: 90, items: ['React', 'Redux', 'TypeScript', 'Tailwind'] },
+  { group: 'Frontend', level: 92, items: ['React', 'Redux Toolkit', 'Next.js', 'TypeScript', 'Tailwind', 'Ant Design'] },
   { group: 'Mobile', level: 78, items: ['React Native', 'Expo'] },
-  { group: 'Backend & data', level: 80, items: ['Django', 'PostgreSQL', 'Supabase', 'Flask', 'AWS S3', 'Heroku'] },
-  { group: 'Product engineering', level: 88, items: ['Multi-tenant apps', 'Realtime', 'Internal tools'] },
-  { group: 'Games & XR', level: 72, items: ['Unity', 'Unreal Engine 5', 'VR', 'Spark AR'] },
+  { group: 'Backend & data', level: 80, items: ['Django REST', 'PostgreSQL', 'Supabase', 'Celery', 'Docker', 'AWS S3'] },
+  { group: 'Product engineering', level: 88, items: ['Multi-tenant apps', 'Micro frontends', 'i18n', 'Feature flags'] },
+  { group: 'Games & XR', level: 72, items: ['Unity', 'Unreal Engine', 'ARCore', 'VR'] },
   { group: 'AI & ML', level: 65, items: ['Keras', 'TensorFlow', 'LLMs', 'OpenCV'] },
 ]
 
 export const timeline: { when: string; what: string; where: string }[] = [
-  // TODO: confirm dates.
-  { when: 'Mar 2026 to now', what: 'Software Engineer', where: 'Dubizzle Labs' },
-  { when: PLACEHOLDER, what: 'Freelance developer', where: 'DripSaint · CSOLS' },
-  { when: '2021 to 2025', what: 'BS Computer Science', where: 'Forman Christian College (FCCU)' },
+  { when: 'Mar 2026 to now', what: 'Associate Software Engineer', where: 'Dubizzle Labs' },
+  { when: 'Mar 2024 to Mar 2026', what: 'Founder and developer', where: 'ClickSotic' },
+  { when: 'Jul 2023 to Mar 2025', what: 'Head of IT', where: 'CSOLS (Caroline School of Legal Studies)' },
+  { when: 'Aug 2021 to Dec 2025', what: 'BS Computer Science', where: 'Forman Christian College (FCCU)' },
   { when: '2022 to 2023', what: 'Co-Lead Developer', where: 'Omnilife VR Society, FCCU' },
 ]
 
 export const achievements: { title: string; detail: string }[] = [
-  { title: 'Co-Lead Developer shield', detail: 'Omnilife VR Society, FCCU' },
-  { title: 'LUMS Uraan Hackathon', detail: '2022 participant' },
-  { title: 'Softec', detail: 'Programming competition' },
-  { title: 'Future Fest', detail: 'Space themed VR demo for Ejad Labs' },
+  { title: 'High Achievers Award', detail: 'FCCU, 2024/25' },
+  { title: '1st place, GDSC contest', detail: 'GDSC FCCU programming contest' },
+  { title: 'Teaching Assistant', detail: 'OOP and Software Design, FCCU' },
+  { title: 'Shield of Appreciation', detail: 'Omnilife FCCU' },
 ]
