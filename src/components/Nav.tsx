@@ -101,7 +101,7 @@ export default function Nav({ active, theme, onToggle }: { active: string; theme
                 }
               >
                 {t(s.label)}
-                <span className={'kbd ' + (active === s.id ? 'border-accent-ink/30 text-accent-ink/70' : '')}>{i + 1}</span>
+                <span className={'kbd ' + (active === s.id ? '!border-accent-ink/50 !bg-accent-ink/10 !text-accent-ink font-bold' : '')}>{i + 1}</span>
               </a>
             ))}
           </nav>
