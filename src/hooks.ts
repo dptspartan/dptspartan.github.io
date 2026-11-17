@@ -79,9 +79,12 @@ export function useSeen<T extends Element>() {
 }
 
 /** Typewriter that cycles through phrases. */
-export function useTypewriter(words: string[], speed = 55, hold = 1600) {
+export function useTypewriter(list: string[], speed = 55, hold = 1600) {
   const [text, setText] = useState('')
+  // Callers often pass a fresh array each render; restart only when the words really change.
+  const key = list.join('\u0000')
   useEffect(() => {
+    const words = key.split('\u0000')
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setText(words[0])
       return
@@ -107,6 +110,6 @@ export function useTypewriter(words: string[], speed = 55, hold = 1600) {
     }
     timer = window.setTimeout(tick, 400)
     return () => clearTimeout(timer)
-  }, [words, speed, hold])
+  }, [key, speed, hold])
   return text
 }
