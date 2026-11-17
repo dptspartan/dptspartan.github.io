@@ -227,5 +227,10 @@
  "Entering sector": "Sektöre giriliyor",
  "Report views for sales teams and managers, powered by Elasticsearch.": "Satış ekipleri ve yöneticiler için Elasticsearch destekli rapor görünümleri.",
  "Need a break from looking at my work? Here is a little fun for you.": "İşlerime bakmaktan biraz mola mı lazım? İşte sana küçük bir eğlence.",
- "Take a drive": "Bir tur at"
+ "Take a drive": "Bir tur at",
+ "3D driving game · Unity": "3B sürüş oyunu · Unity",
+ "A 3D driving game made in Unity that runs right in the browser. No download, just open it and play.": "Unity ile yapılmış, doğrudan tarayıcıda çalışan 3B bir sürüş oyunu. İndirme yok, aç ve oyna.",
+ "Built with Unity 6 and shipped as a full-screen WebGL build.": "Unity 6 ile yapıldı ve tam ekran bir WebGL derlemesi olarak yayınlandı.",
+ "Every release is built and deployed automatically with GitHub Actions.": "Her sürüm GitHub Actions ile otomatik derlenip yayınlanır.",
+ "Compressed build with a fallback, so it loads on any host.": "Yedekli sıkıştırılmış derleme, böylece her sunucuda yüklenir."
 }

@@ -217,5 +217,10 @@
  "Entering sector": "Sektor betreten",
  "Report views for sales teams and managers, powered by Elasticsearch.": "Berichtsansichten für Vertriebsteams und Manager, angetrieben von Elasticsearch.",
  "Need a break from looking at my work? Here is a little fun for you.": "Brauchst du eine Pause von meiner Arbeit? Hier ist ein bisschen Spaß für dich.",
- "Take a drive": "Dreh eine Runde"
+ "Take a drive": "Dreh eine Runde",
+ "3D driving game · Unity": "3D-Fahrspiel · Unity",
+ "A 3D driving game made in Unity that runs right in the browser. No download, just open it and play.": "Ein 3D-Fahrspiel mit Unity, das direkt im Browser läuft. Kein Download, einfach öffnen und spielen.",
+ "Built with Unity 6 and shipped as a full-screen WebGL build.": "Gebaut mit Unity 6 und als Vollbild-WebGL-Build ausgeliefert.",
+ "Every release is built and deployed automatically with GitHub Actions.": "Jedes Release wird automatisch mit GitHub Actions gebaut und veröffentlicht.",
+ "Compressed build with a fallback, so it loads on any host.": "Komprimierter Build mit Fallback, damit er auf jedem Host lädt."
 }
