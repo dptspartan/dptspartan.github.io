@@ -65,7 +65,21 @@ export default function Contact() {
         )}
       </div>
 
-      <footer className="mt-20 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 font-mono text-xs text-muted">
+      {/* A small surprise for whoever made it this far. */}
+      <a
+        href="https://dptspartan.github.io/DriveInOffice/"
+        target="_blank"
+        rel="noreferrer"
+        className="group mt-12 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-dashed border-line-strong px-4 py-3 text-sm text-muted transition hover:border-accent hover:text-text"
+      >
+        <Icon name="play" className="h-4 w-4 shrink-0 text-accent" />
+        <span>{t('Need a break from looking at my work? Here is a little fun for you.')}</span>
+        <span className="inline-flex items-center gap-1.5 font-medium text-accent">
+          {t('Take a drive')} <Icon name="external" className="h-3.5 w-3.5" />
+        </span>
+      </a>
+
+      <footer className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 font-mono text-xs text-muted">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="hidden md:inline">
           {t('Press')} <span className="kbd">1</span>-<span className="kbd">5</span> {t('to jump')} · <span className="kbd">T</span> {t('theme')}
