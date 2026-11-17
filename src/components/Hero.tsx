@@ -71,6 +71,28 @@ export default function Hero({ theme }: { theme: string }) {
             >
               <Icon name="github" /> GitHub
             </a>
+            {profile.linkedin && (
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="inline-flex items-center rounded-lg border border-line-strong px-3.5 py-3 transition hover:border-accent hover:text-accent"
+              >
+                <Icon name="linkedin" />
+              </a>
+            )}
+            {profile.email && (
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label={t('Email')}
+                title={profile.email}
+                className="inline-flex items-center rounded-lg border border-line-strong px-3.5 py-3 transition hover:border-accent hover:text-accent"
+              >
+                <Icon name="mail" />
+              </a>
+            )}
           </div>
         </div>
 
