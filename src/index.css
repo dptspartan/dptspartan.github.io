@@ -409,7 +409,7 @@ body {
   transform: none;
 }
 .curtain.closing .curtain-door {
-  animation: door-in 0.38s cubic-bezier(0.7, 0, 0.3, 1) both;
+  animation: door-in 0.34s cubic-bezier(0.7, 0, 0.3, 1) both;
 }
 .curtain.closing .curtain-door.top {
   --from: -100%;
@@ -426,7 +426,7 @@ body {
   }
 }
 .curtain.opening .curtain-door {
-  transition-duration: 0.48s;
+  transition-duration: 0.44s;
 }
 .curtain-hud {
   position: absolute;
@@ -460,17 +460,6 @@ body {
   to {
     width: 100%;
   }
-}
-
-/* Quicker door pass when scrolling between sections */
-.curtain.pass.closing .curtain-door {
-  animation-duration: 0.26s;
-}
-.curtain.pass.opening .curtain-door {
-  transition-duration: 0.38s;
-}
-.curtain.pass .curtain-bar span {
-  animation-duration: 0.4s;
 }
 
 /* ---------- Operator card scan-in ---------- */
