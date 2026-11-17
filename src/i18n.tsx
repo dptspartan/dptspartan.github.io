@@ -22,20 +22,19 @@ export const LANGS = [
 export type Lang = (typeof LANGS)[number]['code']
 
 const DICTS: Record<Lang, Record<string, string>> = { en: {}, de, tr, ar, ur }
-const KEY = 'lang'
 const isLang = (v: unknown): v is Lang => LANGS.some((l) => l.code === v)
 
-function initialLang(): Lang {
-  const q = new URLSearchParams(window.location.search).get('lang')
-  if (isLang(q)) return q
-  try {
-    const s = sessionStorage.getItem(KEY)
-    if (isLang(s)) return s
-  } catch {
-    /* storage blocked */
-  }
-  const nav = (navigator.language || 'en').slice(0, 2)
-  return isLang(nav) ? nav : 'en'
+/**
+ * The language lives in the URL: / is English, /de/, /tr/, /ar/ and /ur/ are the others.
+ * Each has its own copy of index.html at build time, so links can be shared and indexed.
+ */
+export const pathFor = (l: Lang) => (l === 'en' ? '/' : `/${l}/`)
+
+function langFromUrl(): Lang {
+  const seg = window.location.pathname.split('/')[1]
+  if (isLang(seg)) return seg
+  const q = new URLSearchParams(window.location.search).get('lang') // old ?lang= links
+  return isLang(q) ? q : 'en'
 }
 
 type Translate = (s: string) => string
@@ -56,17 +55,29 @@ type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Translate; content: type
 const LangContext = createContext<Ctx | null>(null)
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(initialLang)
+  const [lang, setLangState] = useState<Lang>(langFromUrl)
+
+  // Switching language changes the URL (keeping the current section) without a reload.
+  const setLang = useCallback((l: Lang) => {
+    history.pushState(null, '', pathFor(l) + window.location.hash)
+    setLangState(l)
+  }, [])
+
+  useEffect(() => {
+    // Normalise old ?lang= links to the path form.
+    if (new URLSearchParams(window.location.search).has('lang')) {
+      history.replaceState(null, '', pathFor(lang) + window.location.hash)
+    }
+    const onPop = () => setLangState(langFromUrl())
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     const meta = LANGS.find((l) => l.code === lang)!
     document.documentElement.lang = lang
     document.documentElement.dir = meta.dir
-    try {
-      sessionStorage.setItem(KEY, lang)
-    } catch {
-      /* storage blocked */
-    }
   }, [lang])
 
   const t = useCallback<Translate>((s) => DICTS[lang][s] ?? s, [lang])
